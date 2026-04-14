@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "roboto-standard";
+    src: url("/src/fonts/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "roboto-standard"; 
+    text-align: center;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+    flex-wrap: wrap;
+}
+.logimage{
+    width: 350px;
+}
+
+.logo li{
+    margin-top: 8px;
+    width: 5px;
+    height: auto;
+    list-style: none;
+}
