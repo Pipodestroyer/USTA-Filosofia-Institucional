@@ -358,12 +358,14 @@ body.fade-out {
    font-weight: bold;
    color: white;
    background-color: #14141738;
-   height: 50px;
+   height: 60%;
    padding-left: 15px;
    border: 0px;
    font-size: 20px;
    width: auto;
    resize: none;
+   padding-top: 10px;
+   padding-bottom: 10px;
 
 }
 
@@ -373,7 +375,7 @@ body.fade-out {
    font-weight: bold;
    color: rgba(255, 255, 255, 0.301);
    background-color: #14141738;
-   height: 30px;
+   height: 40%;
    padding-left: 15px;
    padding-top: 10px;
    padding-bottom: 10px;
@@ -381,6 +383,8 @@ body.fade-out {
    border: 0px;
    font-size: 20px;
    width: auto;
+   overflow-x: hidden;
+
 }
 
 .disable-focus:focus{

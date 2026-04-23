@@ -50,7 +50,6 @@
                     <span class="button-text">Verificar</span>
                     <img class="icon" src="/src/media/check.png">
                     </button> 
-                    <div id="mensaje-feedback" class="feedback"></div>
                     <div class="console" id="consola"><span class="system-msg">> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
                 </div>
             </div>
@@ -121,16 +120,13 @@ except Exception:
             if (pyodide) {
                 document.getElementById('consola').innerHTML = "<span class='system-msg'>> Esperando ejecución...</span>\n";
             }
-            document.getElementById('mensaje-feedback').innerText = "";
         }
 
         async function verificarCodigo() {
             const codigoUsuario = document.getElementById('codigo').value;
             const consola = document.getElementById('consola');
-            const feedback = document.getElementById('mensaje-feedback');
 
             consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span>\n";
-            feedback.innerText = "";
 
             try {
                 // 1. Ejecutamos el código del usuario (los print saldrán en la consola)
@@ -142,8 +138,6 @@ except Exception:
 
                 if (esCorrecto) {
                     consola.innerHTML += "<span class='correct'>> Adecuación confirmada. Lógica correcta.</span>\n";
-                    feedback.innerText = "¡Correcto! Has alcanzado la verdad en este nivel.";
-                    feedback.className = "feedback correct";
                     
                     if (nivelActual < niveles.length - 1) {
                         btnSiguiente.style.display = "block";
@@ -152,14 +146,10 @@ except Exception:
                     }
                 } else {
                     consola.innerHTML += "<span class='incorrect'>> El agente no ha alcanzado su fin. Revisa las instrucciones.</span>\n";
-                    feedback.innerText = "Incorrecto. La potencia aún no es acto.";
-                    feedback.className = "feedback incorrect";
                 }
             } catch (err) {
                 // Capturamos errores de sintaxis o de ejecución de Python
                 consola.innerHTML += "<span class='incorrect'>> Error en la forma (Sintaxis/Excepción):</span>\n" + err;
-                feedback.innerText = "El código contiene errores de sintaxis o ejecución.";
-                feedback.className = "feedback incorrect";
             }
         }
 
