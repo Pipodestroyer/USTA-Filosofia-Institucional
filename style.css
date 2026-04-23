@@ -3,19 +3,101 @@
     src: url("/src/fonts/Roboto-VariableFont_wdth\,wght.ttf");
 }
 
+@font-face {
+    font-family: "title-standard";
+    src: url("/src/fonts/DMSerifText-Regular.ttf");
+}
+
+
+:root{
+    --base-color: white;
+    --base-variant: #eeeeee;
+    --text-color: black;
+    --secondary-text: #232738;
+}
+
+.darkmode{
+    --base-color: rgb(31, 31, 31);
+    --base-variant: #252525;
+    --text-color: rgb(255, 255, 255);
+    --secondary-text: #232738;
+}
 
 body{
     margin: 0;
     padding: 0;
     font-family: "roboto-standard"; 
     text-align: center;
+    background-color: var(--base-color);
+}
+
+#themeswitch{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-width: 0px;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    justify-content: center;
+    align-items: center;
+}
+
+#themeswitch svg{
+    fill: var(--text-color)
+}
+
+#themeswitch svg:last-child{
+    display: none;
+}
+
+.darkmode #themeswitch svg:first-child{
+    display: none;
+}
+
+.darkmode #themeswitch svg:last-child{
+    display: inline;
+}
+
+#mainlogo img:last-child{
+    display: none;
+}
+
+.darkmode #mainlogo img:first-child{
+    display: none;
+}
+
+.darkmode #mainlogo img:last-child{
+    display: inline;
+}
+
+.title{
+    font-family: "title-standard";
+    font-size: 60px;
+}
+.paragraph{
+    font-weight: bold;
+}
+#home{
+    background: url("/src/media/download.jpg");
+    background-size: cover;
+    border-width: 3px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-style: solid;
+    border-color: rgba(232, 233, 237, 0.6);
+    height: 100vh;
+    margin-top: 30px;
+    padding-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: var(--text-color);
 }
 
 .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 10px;
+    padding: 15px 10%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 10;
@@ -23,11 +105,21 @@ body{
 }
 .logimage{
     width: 350px;
-}
-
-.logo li{
-    margin-top: 8px;
-    width: 5px;
     height: auto;
+    cursor: pointer;
+}
+.logo{
     list-style: none;
+}
+a{
+    font-weight: bolder;
+    color: var(--text-color);
+    text-decoration: none;
+}
+.navlinks{
+    list-style: none;
+}
+.navlinks li{
+    display: inline-block;
+    padding: 0px 20px;
 }
