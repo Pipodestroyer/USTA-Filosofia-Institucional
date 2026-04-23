@@ -46,6 +46,7 @@ body{
     flex: 1; 
     display: flex;
     justify-content: flex-end;
+    width: 30%;
 }
 
 #themeswitch{
@@ -158,7 +159,7 @@ body{
 }
 
 .logimage{
-    width: 350px;
+    width: 300px;
     height: auto;
     cursor: pointer;
 }
@@ -167,6 +168,13 @@ body{
     flex:1;
 }
 
+.logo li{
+    width: 30%;
+}
+
+.main-nav{
+    width: 40%;
+}
 
 
 a{
