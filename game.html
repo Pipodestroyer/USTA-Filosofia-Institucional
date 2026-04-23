@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="/style.css">
         <script src="/js/game.js" defer></script>
         <script type="text/javascript" src="/js/darkmode.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     </head>
     <body>
         <!-- Header -->
@@ -49,6 +50,7 @@
                     <span class="button-text">Verificar</span>
                     <img class="icon" src="/src/media/check.png">
                     </button> 
+                    <div id="mensaje-feedback" class="feedback"></div>
                     <div class="console" id="consola"><span class="system-msg">> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
                 </div>
             </div>
@@ -120,14 +122,12 @@ except Exception:
                 document.getElementById('consola').innerHTML = "<span class='system-msg'>> Esperando ejecución...</span>\n";
             }
             document.getElementById('mensaje-feedback').innerText = "";
-            document.getElementById('btn-siguiente').style.display = "none";
         }
 
         async function verificarCodigo() {
-            const codigoUsuario = document.getElementById('editor').value;
+            const codigoUsuario = document.getElementById('codigo').value;
             const consola = document.getElementById('consola');
             const feedback = document.getElementById('mensaje-feedback');
-            const btnSiguiente = document.getElementById('btn-siguiente');
 
             consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span>\n";
             feedback.innerText = "";
