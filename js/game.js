@@ -1,5 +1,5 @@
 const botones = document.getElementById('send');
-const definput = document.getElementById('default-input');
+const definput = document.getElementById('codigo');
 
 function manage(){
     if(definput.value.trim()===''){

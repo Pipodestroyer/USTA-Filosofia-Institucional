@@ -38,20 +38,138 @@
 
         <div class="container" id="game">
             <div class="container" id="gameinner">
-                <h1 class="title">La Primera Vía: El Primer Motor</h1>
-                <p class="paragraph">"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."</p>
-                <p class="paragraph">Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.</p>
+                <h1 class="title" id="tit">La Primera Vía: El Primer Motor</h1>
+                <p class="paragraph" id="subtit">"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."</p>
+                <p class="paragraph" id="acc">Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.</p>
             </div>
             <div>
-                <div class="form">
-                    <input type="text" placeholder="Nombre" id="default-input" maxlength="50" autocomplete="off" class="disable-focus">
-                    <button class="buttonnext" id="send" type="button">
+                <div class="formgame">
+                    <textarea id="codigo" spellcheck="false" class="disable-focus"></textarea>
+                    <button class="buttonnext" id="send" type="button" onclick="verificarCodigo()">
                     <span class="button-text">Verificar</span>
                     <img class="icon" src="/src/media/check.png">
                     </button> 
-                    <input type="text" placeholder="Salida" id="default-input" maxlength="50" autocomplete="off" class="disable-focus">
+                    <div class="console" id="consola"><span class="system-msg">> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
                 </div>
             </div>
         </div>
+        <script>
+            let pyodide;
+        
+        // 1. Inicialización del motor Python Real
+        async function initPyodide() {
+            const consola = document.getElementById('consola');
+            pyodide = await loadPyodide({
+                // Redirigimos el "print" de Python a nuestra consola HTML
+                stdout: (texto) => {
+                    consola.innerHTML += texto + '\n';
+                    consola.scrollTop = consola.scrollHeight;
+                }
+            });
+            consola.innerHTML = "<span class='system-msg'>> Motor Python listo. El intelecto está en acto.</span>\n";
+            cargarNivel();
+        }
+
+        // 2. Definición de Niveles con Tests Reales en Python
+        const niveles = [
+            {
+                titulo: "La Primera Vía: El Primer Motor",
+                filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',
+                enunciado: 'Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.',
+                codigoInicial: "def encontrar_motor():\n    # Escribe tu código aquí\n    pass",
+                // Este script se ejecuta en Python "por detrás" para validar
+                testPython: `
+try:
+    resultado = encontrar_motor()
+    resultado == "Primer Motor"
+except NameError:
+    False
+except Exception:
+    False
+`
+            },
+            {
+                titulo: "De Potencia a Acto",
+                filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
+                enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
+                codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+                testPython: `
+try:
+    obj = Ente()
+    # Verificamos si el método existe llamándolo
+    # Si imprime algo, se capturará en stdout, pero la evaluación de éxito es que no arroje error
+    obj.actualizar()
+    True
+except AttributeError:
+    False
+except Exception:
+    False
+`
+            }
+        ];
+
+        let nivelActual = 0;
+
+        function cargarNivel() {
+            const nivel = niveles[nivelActual];
+            document.getElementById('tit').innerText = nivel.titulo;
+            document.getElementById('subtit').innerText = nivel.filosofia;
+            document.getElementById('acc').innerHTML = nivel.enunciado;
+            document.getElementById('codigo').value = nivel.codigoInicial;
+            if (pyodide) {
+                document.getElementById('consola').innerHTML = "<span class='system-msg'>> Esperando ejecución...</span>\n";
+            }
+            document.getElementById('mensaje-feedback').innerText = "";
+            document.getElementById('btn-siguiente').style.display = "none";
+        }
+
+        async function verificarCodigo() {
+            const codigoUsuario = document.getElementById('editor').value;
+            const consola = document.getElementById('consola');
+            const feedback = document.getElementById('mensaje-feedback');
+            const btnSiguiente = document.getElementById('btn-siguiente');
+
+            consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span>\n";
+            feedback.innerText = "";
+
+            try {
+                // 1. Ejecutamos el código del usuario (los print saldrán en la consola)
+                await pyodide.runPythonAsync(codigoUsuario);
+
+                // 2. Ejecutamos la validación oculta
+                const testCode = niveles[nivelActual].testPython;
+                const esCorrecto = await pyodide.runPythonAsync(testCode);
+
+                if (esCorrecto) {
+                    consola.innerHTML += "<span class='correct'>> Adecuación confirmada. Lógica correcta.</span>\n";
+                    feedback.innerText = "¡Correcto! Has alcanzado la verdad en este nivel.";
+                    feedback.className = "feedback correct";
+                    
+                    if (nivelActual < niveles.length - 1) {
+                        btnSiguiente.style.display = "block";
+                    } else {
+                        feedback.innerText = "¡Felicidades! Has completado todas las vías.";
+                    }
+                } else {
+                    consola.innerHTML += "<span class='incorrect'>> El agente no ha alcanzado su fin. Revisa las instrucciones.</span>\n";
+                    feedback.innerText = "Incorrecto. La potencia aún no es acto.";
+                    feedback.className = "feedback incorrect";
+                }
+            } catch (err) {
+                // Capturamos errores de sintaxis o de ejecución de Python
+                consola.innerHTML += "<span class='incorrect'>> Error en la forma (Sintaxis/Excepción):</span>\n" + err;
+                feedback.innerText = "El código contiene errores de sintaxis o ejecución.";
+                feedback.className = "feedback incorrect";
+            }
+        }
+
+        function siguienteNivel() {
+            nivelActual++;
+            cargarNivel();
+        }
+
+        // Arrancar el motor al cargar la página
+        initPyodide();
+        </script>
     </body>
 </html>

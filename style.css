@@ -210,6 +210,30 @@ a{
     padding-right: 30px;
 }
 
+.formgame{
+    background-color: var(--form);
+    backdrop-filter: blur(50px);
+    border-color: #4c4c55c9;
+    border-style: solid;
+    border-width: 1px;
+    -ms-flex-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 30%;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 25px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    justify-content: center;
+    place-self: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 .button-link{
   width: 100px;
 }
@@ -324,6 +348,36 @@ body.fade-out {
    background-color: #14141738;
    height: 50px;
    padding-left: 15px;
+   border: 0px;
+   font-size: 20px;
+   width: auto;
+}
+
+#codigo{
+   border-radius: 10px; 
+   font-weight: bold;
+   color: white;
+   background-color: #14141738;
+   height: 50px;
+   padding-left: 15px;
+   border: 0px;
+   font-size: 20px;
+   width: auto;
+   resize: none;
+
+}
+
+
+#consola{
+   border-radius: 10px; 
+   font-weight: bold;
+   color: rgba(255, 255, 255, 0.301);
+   background-color: #14141738;
+   height: 30px;
+   padding-left: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin-top: 5px;
    border: 0px;
    font-size: 20px;
    width: auto;
