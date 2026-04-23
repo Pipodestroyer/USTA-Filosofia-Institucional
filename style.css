@@ -13,20 +13,24 @@
     --base-color: white;
     --base-variant: #eeeeee;
     --text-color: black;
-    --secondary-text: #232738;
+    --secondary-text: #333333;
     --success: #50fa7b;
     --error: #ff5555;
     --warning: #f1fa8c;
+    --border-color: rgb(195, 195, 197);
+    --form: #1f1f1fc9;
 }
 
 .darkmode{
     --base-color: rgb(31, 31, 31);
     --base-variant: #252525;
     --text-color: rgb(255, 255, 255);
-    --secondary-text: #232738;
+    --secondary-text: #696969;
     --success: #50fa7b;
     --error: #ff5555;
     --warning: #f1fa8c;
+    --border-color: rgb(58, 58, 58);
+    --form: #141417C9;
 }
 
 body{
@@ -36,6 +40,12 @@ body{
     text-align: center;
     background-color: var(--base-color);
     overflow: hidden;
+}
+
+#headerswitch{
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
 }
 
 #themeswitch{
@@ -50,7 +60,7 @@ body{
 }
 
 #themeswitch svg{
-    fill: var(--text-color)
+    fill: var(--secondary-text)
 }
 
 #themeswitch svg:last-child{
@@ -101,7 +111,7 @@ body{
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     border-style: solid;
-    border-color: rgba(232, 233, 237, 0.6);
+    border-color: var(--border-color);
     height: 100vh;
     margin-top: 30px;
     padding-top: 30px;
@@ -110,6 +120,24 @@ body{
     color: white;
 }
 
+#game{
+    background: url("/src/media/Game.png");
+    place-items: center;
+    overflow: hidden;
+    z-index: -1;
+    background-size: cover;
+    border-width: 2px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-style: solid;
+    border-color: var(--border-color);
+    height: 100vh;
+    margin-top: 30px;
+    padding-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: white;
+}
 
 
 .header{
@@ -122,6 +150,7 @@ body{
     z-index: 10;
     flex-wrap: wrap;
 }
+
 .logimage{
     width: 350px;
     height: auto;
@@ -129,7 +158,10 @@ body{
 }
 .logo{
     list-style: none;
+    flex:1;
 }
+
+
 
 a{
     font-weight: bolder;
@@ -139,6 +171,9 @@ a{
 
 .navlinks{
     list-style: none;
+    margin: 0;
+    justify-content: center;
+    padding: 0;
 }
 .navlinks li{
     display: inline-block;
@@ -146,7 +181,7 @@ a{
 }
 
 .form{
-    background-color: #141417C9;
+    background-color: var(--form);
     backdrop-filter: blur(50px);
     border-color: #4c4c55c9;
     border-style: solid;
@@ -193,6 +228,26 @@ a{
   cursor: pointer;
 }
 
+.buttonnext{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px; 
+  text-align: left;
+  transition: transform 0.2s, opacity 0.5s ease-in-out;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  height: 55px;
+  padding-left: 15px;
+  background: linear-gradient(270deg,rgb(51, 219, 115) 0%, rgb(70, 173, 87) 50%, rgb(63, 136, 75) 100%);
+  width: auto;
+  margin-top: 8px;
+  padding-right: 10px;
+  border: 0px;
+  cursor: pointer;
+}
+
 .error{
   position: relative;
   animation: shake .1s linear;
@@ -220,6 +275,15 @@ a{
 
 .buttoncontinue:focus {
   outline: 0px;
+}
+
+body.fade-in {
+  opacity: 1;
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 #default-input{
