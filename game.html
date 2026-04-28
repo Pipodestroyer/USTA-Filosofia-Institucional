@@ -23,7 +23,7 @@
             <nav class="main-nav">
                 <ul class="navlinks">
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="index.html">Metodologia</a></li>
+                    <li><a href="/src/media/filosofia (1).pdf" target="_blank">Metodologia</a></li>
                     <li><a href="https://www.ustavillavicencio.edu.co/">Usta</a></li>
                 </ul>
             </nav>
@@ -57,11 +57,10 @@
         <script>
             let pyodide;
         
-        // 1. Inicialización del motor Python Real
         async function initPyodide() {
             const consola = document.getElementById('consola');
             pyodide = await loadPyodide({
-                // Redirigimos el "print" de Python a nuestra consola HTML
+
                 stdout: (texto) => {
                     consola.innerHTML += texto + '\n';
                     consola.scrollTop = consola.scrollHeight;
@@ -71,7 +70,6 @@
             cargarNivel();
         }
 
-        // 2. Definición de Niveles con Tests Reales en Python
         const niveles = [
             {
                 titulo: "La Primera Vía: El Primer Motor",
@@ -81,8 +79,7 @@
                 // Este script se ejecuta en Python "por detrás" para validar
                 testPython: `
 try:
-    resultado = encontrar_motor()
-    resultado == "Primer Motor"
+    print(encontrar_motor())
 except NameError:
     False
 except Exception:
@@ -129,10 +126,9 @@ except Exception:
             consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span>\n";
 
             try {
-                // 1. Ejecutamos el código del usuario (los print saldrán en la consola)
+
                 await pyodide.runPythonAsync(codigoUsuario);
 
-                // 2. Ejecutamos la validación oculta
                 const testCode = niveles[nivelActual].testPython;
                 const esCorrecto = await pyodide.runPythonAsync(testCode);
 
@@ -148,7 +144,6 @@ except Exception:
                     consola.innerHTML += "<span class='incorrect'>> El agente no ha alcanzado su fin. Revisa las instrucciones.</span>\n";
                 }
             } catch (err) {
-                // Capturamos errores de sintaxis o de ejecución de Python
                 consola.innerHTML += "<span class='incorrect'>> Error en la forma (Sintaxis/Excepción):</span>\n" + err;
             }
         }
@@ -158,7 +153,7 @@ except Exception:
             cargarNivel();
         }
 
-        // Arrancar el motor al cargar la página
+
         initPyodide();
         </script>
     </body>
