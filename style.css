@@ -430,7 +430,6 @@ body.fade-out {
    resize: none;
    padding-top: 10px;
    padding-bottom: 10px;
-
 }
 
 
@@ -449,6 +448,37 @@ body.fade-out {
    width: auto;
    overflow-x: hidden;
 
+}
+
+#consola{
+   border-radius: 10px; 
+   font-weight: bold;
+   color: rgba(255, 255, 255, 0.301);
+   background-color: #14141738;
+   height: 40%;
+   padding-left: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin-top: 5px;
+   border: 0px;
+   font-size: 20px;
+   width: auto;
+   overflow-x: hidden;
+}
+
+#leaderboard{
+   border-radius: 10px; 
+   font-weight: bold;
+   color: rgba(255, 255, 255, 0.301);
+   background-color: #14141738;
+   height: auto;
+   padding-left: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   margin-top: 5px;
+   border: 0px;
+   font-size: 20px;
+   width: auto;
 }
 
 .disable-focus:focus{

@@ -3,9 +3,8 @@
     <head>
         <title>USTA Filosofia</title>
         <link rel="stylesheet" href="/style.css">
-        <script src="/js/game.js" defer></script>
+        <script type="text/javascript" src="/js/finish.js" defer></script>
         <script type="text/javascript" src="/js/darkmode.js" defer></script>
-        <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
     </head>
     <body>
         <!-- Header -->
@@ -34,6 +33,7 @@
                 </button>
             </div>
         </header>
+
         <!-- Main -->
 
 
@@ -46,12 +46,10 @@
             <div>
                 <div class="stats">
                     <h1 class="statstitle" id="tit">Clasificación</h1>
-                    <input type="text" placeholder="#1 | Juan 5:30.123 🥇" id="default-input" maxlength="50" autocomplete="off" class="disable-focus">
-                    <input type="text" placeholder="#2 | Sebastian 5:45.678 🥈" id="default-input" maxlength="50" autocomplete="off" class="disable-focus">
-                    <input type="text" placeholder="#3 | Ana 6:12.345 🥉" id="default-input" maxlength="50" autocomplete="off" class="disable-focus">
-                    <button class="buttonfinish" id="send" type="button">
+                    <div class="leaderboard" id="leaderboard"><span class="system-msg">Placeholder</span></div>
+                    <button class="buttonfinish" id="buttonfinish" type="button">
                     <span class="button-text">Finalizar</span>
-                    <img class="icon" src="/src/media/check.png">
+                    <img class="icon" src="/src/media/goalreach.png">
                     </button> 
                 </div>
             </div>
