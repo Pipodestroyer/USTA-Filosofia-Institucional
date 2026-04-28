@@ -214,7 +214,7 @@ a{
     -ms-flex-align: center;
     display: flex;
     flex-direction: column;
-    height: 15dvh;
+    height: auto;
     width: 80%;
     margin-top: 10%;
     margin-bottom: 30%;
