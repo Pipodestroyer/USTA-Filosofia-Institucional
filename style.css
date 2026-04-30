@@ -248,7 +248,7 @@ body{
     flex-direction: column;
    }
    .logimage{
-    width: max(40vw, 190px);
+    width: 190px;
     height:  auto;
     cursor: pointer;
    }
@@ -278,6 +278,7 @@ body{
     width: 100%;
     padding: 15px 10%;
     z-index: 99;
+    height: 100px;
     margin-top: 0;
     top: 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -313,7 +314,7 @@ body{
     border-bottom-right-radius: 25px;
    } 
    .mobile-dropdown.show{
-    top: max(16vw, 95px);
+    top: 100px;
    }
    .mobile-dropdown.show ~ #overlay{
     display: block;
