@@ -47,6 +47,7 @@ body{
     display: flex;
     justify-content: flex-end;
     width: 30%;
+    cursor: pointer;
 }
 
 #themeswitch{
@@ -58,6 +59,7 @@ body{
     background-color: var(--base-variant);
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #themeswitch svg{
@@ -74,6 +76,22 @@ body{
 
 .darkmode #themeswitch svg:last-child{
     display: inline;
+}
+
+#menu{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-width: 0px;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#menu svg{
+    fill: var(--secondary-text)
 }
 
 #mainlogo img:last-child{
@@ -156,9 +174,23 @@ body{
 #game div {
     flex: 1;
 }
-
-
-.header{
+@media screen and (max-width: 910px) {
+   .main-nav{
+    display: none;
+   }
+   #game{
+    flex-direction: column;
+   }
+   body{
+    overflow-y: auto;
+   }
+   #themeswitch{
+    display: none;
+   }
+   #menu{
+    display: block;
+   }
+   .header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,6 +199,26 @@ body{
     position: relative;
     z-index: 10;
     flex-wrap: wrap;
+   } 
+}
+
+@media screen and (min-width: 910px) {
+    #themeswitch{
+    display: block;
+   }
+   #menu{
+    display: none;
+   }
+   .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+    flex-wrap: wrap;
+   } 
 }
 
 .logimage{
