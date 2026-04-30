@@ -174,12 +174,17 @@ body{
 #game div {
     flex: 1;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 910px) {
    .main-nav{
     display: none;
    }
    #game{
     flex-direction: column;
+   }
+   .logimage{
+    width: max(40vw, 190px);
+    height:  auto;
+    cursor: pointer;
    }
    body{
     overflow-y: auto;
@@ -202,7 +207,7 @@ body{
    } 
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 910px) {
     #themeswitch{
     display: block;
    }
@@ -219,13 +224,13 @@ body{
     z-index: 10;
     flex-wrap: wrap;
    } 
-}
-
-.logimage{
+   .logimage{
     width: 300px;
     height: auto;
     cursor: pointer;
+   }
 }
+
 .logo{
     list-style: none;
     flex:1;
