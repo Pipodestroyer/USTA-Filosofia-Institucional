@@ -34,12 +34,14 @@ const home = document.getElementsByClassName('container')[0];
 const enableDropdown = () => {
     drops.classList.add('show')
     home.classList.add('show')
+    document.body.classList.add('show')
     localStorage.setItem('dropdown', 'active')
 }
 
 const disableDropdown = () => {
     drops.classList.remove('show')
     home.classList.remove('show')
+    document.body.classList.remove('show')
     localStorage.setItem('dropdown', null)
 }
 

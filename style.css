@@ -94,22 +94,6 @@ body{
   opacity: 1;
 }
 
-#menu{
-    height: 50px;
-    width: 50px;
-    padding: 0;
-    border-width: 0px;
-    border-radius: 50%;
-    background-color: var(--base-variant);
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-#menu svg{
-    fill: var(--secondary-text)
-}
-
 #mainlogo img:last-child{
     display: none;
 }
@@ -200,6 +184,30 @@ body{
     cursor: pointer;
 }
 
+#menu{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-width: 0px;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+}
+
+#menu svg{
+    fill: var(--secondary-text);
+    position: absolute;
+    right: 25%;
+    bottom: 25%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+
+
 #mobile-themeswitch{
     height: 50px;
     width: 50px;
@@ -220,6 +228,26 @@ body{
     right: 25%;
     bottom: 25%;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.hamburguer {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.close {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.show .hamburguer {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.show .close {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .moon {
@@ -253,7 +281,7 @@ body{
     cursor: pointer;
    }
    body{
-    margin-top: 15vh;
+    margin-top: 130px;
     overflow-y: auto;
    }
    #home{
@@ -288,7 +316,7 @@ body{
     background-color: var(--base-color);
    } 
    #overlay{
-    background: none;
+    background: rgb(0, 0, 0, 0.5);
     position: fixed;
     inset: 0;
     z-index: 1;
@@ -312,6 +340,7 @@ body{
     flex-wrap: wrap;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+    transition: transform 0.5s ease-in-out;
    } 
    .mobile-dropdown.show{
     top: 100px;
@@ -363,6 +392,7 @@ body{
     display: flex;
     justify-content: space-between;
     z-index: 99;
+    height: 100px;
     align-items: center;
     padding: 15px 10%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
