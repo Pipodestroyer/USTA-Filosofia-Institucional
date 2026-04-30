@@ -132,7 +132,7 @@ body{
 #home{
     background: url("/src/media/download.png");
     place-items: center;
-    overflow: hidden;
+    overflow: show;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
@@ -154,7 +154,7 @@ body{
     display: flex;
     gap: 20px;
     text-align: left;
-    overflow: hidden;
+    overflow: show;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
