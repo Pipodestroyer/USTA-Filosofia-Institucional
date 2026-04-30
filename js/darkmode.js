@@ -18,21 +18,32 @@ themeswitch.addEventListener("click", () =>{
     darkmode !== "active" ? enableDarkmode() : disableDarkmode()
 })
 
+const themeswitchmobile = document.getElementById('mobile-themeswitch')
+
+themeswitchmobile.addEventListener("click", () =>{
+    darkmodemobile = localStorage.getItem('darkmode')
+    darkmodemobile !== "active" ? enableDarkmode() : disableDarkmode()
+})
+
 let dropdown = localStorage.getItem('dropdown')
 const menu = document.getElementById('menu')
 const drops = document.getElementById('mobile-dropdown')
+const home = document.getElementsByClassName('container')[0];
+
 
 const enableDropdown = () => {
     drops.classList.add('show')
+    home.classList.add('show')
     localStorage.setItem('dropdown', 'active')
 }
 
 const disableDropdown = () => {
     drops.classList.remove('show')
+    home.classList.remove('show')
     localStorage.setItem('dropdown', null)
 }
 
-if(dropdown === "active") enableDropdown()
+if(dropdown === "active") disableDropdown()
 
 menu.addEventListener("click", () =>{
     dropdown = localStorage.getItem('dropdown')

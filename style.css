@@ -41,7 +41,7 @@ body{
     font-family: "roboto-standard"; 
     text-align: center;
     background-color: var(--base-color);
-    overflow: hidden;
+    overflow: show;
 }
 
 #headerswitch{
@@ -146,7 +146,7 @@ body{
     background: url("/src/media/download.png");
     place-items: center;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: show;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
@@ -154,7 +154,7 @@ body{
     border-top-right-radius: 40px;
     border-style: solid;
     border-color: var(--border-color);
-    height: 100vh;
+    height: 85vh;
     margin-top: 30px;
     padding-top: 30px;
     margin-left: min(50px, 3vw);
@@ -168,7 +168,7 @@ body{
     display: flex;
     gap: 20px;
     text-align: left;
-    overflow: hidden;
+    overflow: show;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
@@ -176,7 +176,7 @@ body{
     border-top-right-radius: 40px;
     border-style: solid;
     border-color: var(--border-color);
-    height: 100vh;
+    height: 85vh;
     box-sizing: border-box;
     margin-top: 30px;
     padding-top: 30px;
@@ -192,6 +192,55 @@ body{
 }
 
 @media only screen and (max-width: 910px) {
+    #mobile-headerswitch{
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+#mobile-themeswitch{
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-width: 0px;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    overflow: hidden;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+}
+
+#mobile-themeswitch svg{
+    fill: var(--secondary-text);
+    position: absolute;
+    right: 25%;
+    bottom: 25%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.moon {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.sun {
+  transform: translateY(-100%) scale(0);
+  opacity: 0;
+}
+
+.darkmode .moon {
+  transform: translateY(100%) scale(0);
+  opacity: 0;
+}
+
+.darkmode .sun {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  } 
    .main-nav{
     display: none;
    }
@@ -204,6 +253,7 @@ body{
     cursor: pointer;
    }
    body{
+    margin-top: 15vh;
     overflow-y: auto;
    }
    #home{
@@ -223,32 +273,56 @@ body{
    .header{
     display: flex;
     justify-content: space-between;
+    box-sizing: border-box;
     align-items: center;
+    width: 100%;
     padding: 15px 10%;
     z-index: 99;
+    margin-top: 0;
+    top: 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    position: relative;
+    position: fixed;
     z-index: 10;
     flex-wrap: wrap;
+    background-color: var(--base-color);
    } 
+   #overlay{
+    background: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: none;
+   }
    .mobile-dropdown{
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 10%;
+    padding-top: 30px;
+    padding: 20px 10%;
     z-index: 99;
     background-color: var(--base-color);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     top: -100%;
     position: fixed;
-    width: 100dvw;
+    width: 100%;
     z-index: 2;
     flex-wrap: wrap;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
    } 
    .mobile-dropdown.show{
-    top: 10%;
+    top: max(16vw, 95px);
+   }
+   .mobile-dropdown.show ~ #overlay{
+    display: block;
+   }
+   #home.show{
+    filter: blur(10px);
+   }
+   #game.show{
+    filter: blur(10px);
    }
    .navlinks{
     display: flex;
@@ -283,6 +357,7 @@ body{
    #menu{
     display: none;
    }
+   
    .header{
     display: flex;
     justify-content: space-between;
