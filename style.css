@@ -174,7 +174,7 @@ body{
 #game div {
     flex: 1;
 }
-@media screen and (max-width: 910px) {
+@media screen and (max-width: 768px) {
    .main-nav{
     display: none;
    }
@@ -202,7 +202,7 @@ body{
    } 
 }
 
-@media screen and (min-width: 910px) {
+@media screen and (min-width: 768px) {
     #themeswitch{
     display: block;
    }
