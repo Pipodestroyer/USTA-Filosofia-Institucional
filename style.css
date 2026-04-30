@@ -19,6 +19,7 @@
     --warning: #f1fa8c;
     --border-color: rgb(195, 195, 197);
     --form: #1f1f1fc9;
+    --hover-color: #525252;
 }
 
 .darkmode{
@@ -31,6 +32,7 @@
     --warning: #f1fa8c;
     --border-color: rgb(58, 58, 58);
     --form: #141417C9;
+    --hover-color: #c5c5c5;
 }
 
 body{
@@ -57,25 +59,39 @@ body{
     border-width: 0px;
     border-radius: 50%;
     background-color: var(--base-variant);
+    overflow: hidden;
     justify-content: center;
+    position: relative;
     align-items: center;
     cursor: pointer;
 }
 
 #themeswitch svg{
-    fill: var(--secondary-text)
+    fill: var(--secondary-text);
+    position: absolute;
+    right: 25%;
+    bottom: 25%;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-#themeswitch svg:last-child{
-    display: none;
+.moon {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
-.darkmode #themeswitch svg:first-child{
-    display: none;
+.sun {
+  transform: translateY(-100%) scale(0);
+  opacity: 0;
 }
 
-.darkmode #themeswitch svg:last-child{
-    display: inline;
+.darkmode .moon {
+  transform: translateY(100%) scale(0);
+  opacity: 0;
+}
+
+.darkmode .sun {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
 #menu{
@@ -108,7 +124,6 @@ body{
 
 .title{
     font-family: "title-standard";
-    font-size: 7vh;
     margin-top: 5%;
     margin-left: 7%;
     margin-right: 7%;
@@ -116,7 +131,6 @@ body{
 
 .statstitle{
     font-family: "title-standard";
-    font-size: 7vh;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
@@ -124,7 +138,6 @@ body{
 
 .paragraph{
     font-weight: bold;
-    font-size: 2.5vh;
     margin-left: 7%;
     margin-right: 7%;
 }
@@ -132,7 +145,8 @@ body{
 #home{
     background: url("/src/media/download.png");
     place-items: center;
-    overflow: show;
+    box-sizing: border-box;
+    overflow: hidden;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
@@ -154,7 +168,7 @@ body{
     display: flex;
     gap: 20px;
     text-align: left;
-    overflow: show;
+    overflow: hidden;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
@@ -163,8 +177,10 @@ body{
     border-style: solid;
     border-color: var(--border-color);
     height: 100vh;
+    box-sizing: border-box;
     margin-top: 30px;
     padding-top: 30px;
+    padding-bottom: 30px;
     margin-left: min(50px, 3vw);
     margin-right: min(50px, 3vw);
     color: rgb(255, 255, 255);
@@ -174,6 +190,7 @@ body{
 #game div {
     flex: 1;
 }
+
 @media only screen and (max-width: 910px) {
    .main-nav{
     display: none;
@@ -189,6 +206,14 @@ body{
    body{
     overflow-y: auto;
    }
+   #home{
+    height: 100vh;
+    overflow: show;
+   }
+   #game{
+    height: auto;
+    overflow: show;
+   }
    #themeswitch{
     display: none;
    }
@@ -200,11 +225,55 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 15px 10%;
+    z-index: 99;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 10;
     flex-wrap: wrap;
    } 
+   .mobile-dropdown{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    z-index: 99;
+    background-color: var(--base-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    top: -100%;
+    position: fixed;
+    width: 100dvw;
+    z-index: 2;
+    flex-wrap: wrap;
+   } 
+   .mobile-dropdown.show{
+    top: 10%;
+   }
+   .navlinks{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+   }
+   .formgame{
+    height: 50vh;
+    margin-bottom: 5px;
+   }
+   #consola{
+   height: 30vh;
+   }
+   .title{
+    font-size: max(7vw, 50px);
+   }
+
+   .statstitle{
+    font-size: max(7vw, 20px);
+   }
+
+   .paragraph{
+    font-size: max(2.5vw, 16px);
+   }
 }
 
 @media only screen and (min-width: 910px) {
@@ -217,6 +286,7 @@ body{
    .header{
     display: flex;
     justify-content: space-between;
+    z-index: 99;
     align-items: center;
     padding: 15px 10%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -228,6 +298,27 @@ body{
     width: 300px;
     height: auto;
     cursor: pointer;
+   }
+   .formgame{
+    height: 90%;
+    margin-bottom: 0;
+   }
+   #consola{
+   height: 40%;
+   }
+   .mobile-dropdown{
+    display: none;
+   }
+   .title{
+    font-size: max(7vh, 50px);
+   }
+
+   .statstitle{
+    font-size: max(7vh, 20px);
+   }
+
+   .paragraph{
+    font-size: max(2.5vh, 16px);
    }
 }
 
@@ -249,6 +340,7 @@ a{
     font-weight: bolder;
     color: var(--text-color);
     text-decoration: none;
+    transition:color 0.3s ease;
 }
 
 .navlinks{
@@ -260,6 +352,9 @@ a{
 .navlinks li{
     display: inline-block;
     padding: 0px 20px;
+}
+.navlinks li a:hover{
+    color: var(--hover-color);
 }
 
 .form{
@@ -319,10 +414,8 @@ a{
     -ms-flex-align: center;
     display: flex;
     flex-direction: column;
-    height: 70%;
     width: 80%;
     margin-top: 0;
-    margin-bottom: 30%;
     margin-left: 0;
     margin-right: 0;
     border-radius: 25px;
@@ -495,7 +588,6 @@ body.fade-out {
    font-weight: bold;
    color: rgba(255, 255, 255, 0.301);
    background-color: #14141738;
-   height: 40%;
    padding-left: 15px;
    padding-top: 10px;
    padding-bottom: 10px;
@@ -505,22 +597,6 @@ body.fade-out {
    width: auto;
    overflow-x: hidden;
 
-}
-
-#consola{
-   border-radius: 10px; 
-   font-weight: bold;
-   color: rgba(255, 255, 255, 0.301);
-   background-color: #14141738;
-   height: 40%;
-   padding-left: 15px;
-   padding-top: 10px;
-   padding-bottom: 10px;
-   margin-top: 5px;
-   border: 0px;
-   font-size: 20px;
-   width: auto;
-   overflow-x: hidden;
 }
 
 #leaderboard{

@@ -17,3 +17,24 @@ themeswitch.addEventListener("click", () =>{
     darkmode = localStorage.getItem('darkmode')
     darkmode !== "active" ? enableDarkmode() : disableDarkmode()
 })
+
+let dropdown = localStorage.getItem('dropdown')
+const menu = document.getElementById('menu')
+const drops = document.getElementById('mobile-dropdown')
+
+const enableDropdown = () => {
+    drops.classList.add('show')
+    localStorage.setItem('dropdown', 'active')
+}
+
+const disableDropdown = () => {
+    drops.classList.remove('show')
+    localStorage.setItem('dropdown', null)
+}
+
+if(dropdown === "active") enableDropdown()
+
+menu.addEventListener("click", () =>{
+    dropdown = localStorage.getItem('dropdown')
+    dropdown !== "active" ? enableDropdown() : disableDropdown()
+})
