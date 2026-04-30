@@ -138,7 +138,7 @@ body{
     border-top-right-radius: 40px;
     border-style: solid;
     border-color: var(--border-color);
-    height: 85vh;
+    height: auto;
     margin-top: 30px;
     padding-top: 30px;
     margin-left: min(50px, 3vw);
@@ -152,7 +152,7 @@ body{
     display: flex;
     gap: 20px;
     text-align: left;
-    overflow: show;
+    overflow: auto;
     z-index: -1;
     background-size: cover;
     border-width: 2px;
@@ -160,7 +160,7 @@ body{
     border-top-right-radius: 40px;
     border-style: solid;
     border-color: var(--border-color);
-    height: 85vh;
+    height: auto;
     box-sizing: border-box;
     margin-top: 30px;
     padding-top: 30px;
@@ -290,7 +290,7 @@ body{
    }
    #game{
     height: auto;
-    overflow: show;
+    overflow: auto;
    }
    #themeswitch{
     display: none;
@@ -406,7 +406,7 @@ body{
     cursor: pointer;
    }
    .formgame{
-    height: 90%;
+    height: 85vh;
     margin-bottom: 0;
    }
    #consola{
@@ -475,7 +475,7 @@ a{
     height: auto;
     width: 80%;
     margin-top: 10%;
-    margin-bottom: 30%;
+    margin-bottom: 30px;
     margin-left: 0;
     margin-right: 0;
     border-radius: 25px;
