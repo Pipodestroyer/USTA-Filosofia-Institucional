@@ -64,8 +64,15 @@
                 <h1 class="title" id="tit">La Primera Vía: El Primer Motor</h1>
                 <p class="paragraph" id="subtit">"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."</p>
                 <p class="paragraph" id="acc">Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.</p>
+                <div class="helper">
+                    <div class="counter">0:00.000 <code>0/5</code></div>
+                    <button class="buttonhelp" id="send" type="button" onclick="Despliegue()">
+                    <span class="button-text">Ayuda</span>
+                    <img class="icon" src="/src/media/helpicon.png">
+                    </button>
+                </div>
             </div>
-            <div>
+            <div class="uppergame" id="gameupper">
                 <div class="formgame">
                     <textarea id="codigo" spellcheck="false" class="disable-focus"></textarea>
                     <button class="buttonnext" id="send" type="button" onclick="verificarCodigo()">
@@ -137,7 +144,7 @@ except Exception:
             document.getElementById('acc').innerHTML = nivel.enunciado;
             document.getElementById('codigo').value = nivel.codigoInicial;
             if (pyodide) {
-                document.getElementById('consola').innerHTML = "<span class='system-msg'>> Esperando ejecución...</span>\n";
+                document.getElementById('consola').innerHTML = "<span class='system-msg'>> Esperando ejecución...</span><br>";
             }
         }
 
@@ -145,7 +152,7 @@ except Exception:
             const codigoUsuario = document.getElementById('codigo').value;
             const consola = document.getElementById('consola');
 
-            consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span>\n";
+            consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span><br>";
 
             try {
 
@@ -155,7 +162,7 @@ except Exception:
                 const esCorrecto = await pyodide.runPythonAsync(testCode);
 
                 if (esCorrecto) {
-                    consola.innerHTML += "<span class='correct'>> Adecuación confirmada. Lógica correcta.</span>\n";
+                    consola.innerHTML += "<span class='correct'>> Adecuación confirmada. Lógica correcta.</span><br>";
                     
                     if (nivelActual < niveles.length - 1) {
                         btnSiguiente.style.display = "block";
@@ -163,10 +170,10 @@ except Exception:
                         feedback.innerText = "¡Felicidades! Has completado todas las vías.";
                     }
                 } else {
-                    consola.innerHTML += "<span class='incorrect'>> El agente no ha alcanzado su fin. Revisa las instrucciones.</span>\n";
+                    consola.innerHTML += "<span class='incorrect'>> El agente no ha alcanzado su fin. Revisa las instrucciones.</span><br>";
                 }
             } catch (err) {
-                consola.innerHTML += "<span class='incorrect'>> Error en la forma (Sintaxis/Excepción):</span>\n" + err;
+                consola.innerHTML += "<span class='incorrect'>> Error en la forma (Sintaxis/Excepción):</span><br>" + err;
             }
         }
 
