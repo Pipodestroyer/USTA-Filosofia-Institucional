@@ -53,6 +53,7 @@ body{
   justify-content: flex-end;
   width: 30%;
   cursor: pointer;
+  user-select: none;
 }
 
 #themeswitch{
@@ -67,6 +68,7 @@ body{
   position: relative;
   align-items: center;
   cursor: pointer;
+  user-select: none;
 }
 
 #themeswitch svg{
@@ -172,11 +174,35 @@ body{
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
+#finish{
+  background: url("/src/media/Game.png");
+  place-items: center;
+  overflow: hidden;
+  z-index: -1;
+  background-size: cover;
+  border-width: 2px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-style: solid;
+  border-color: var(--border-color);
+  margin-top: 30px;
+  padding-top: 30px;
+  margin-left: min(50px, 3vw);
+  margin-right: min(50px, 3vw);
+  color: white;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+
 #game div {
   flex: 1;
 }
 
 #forms{
+  width: 100%;
+  height: auto;
+}
+
+#status{
   width: 100%;
   height: auto;
 }
@@ -194,6 +220,11 @@ body{
     cursor: pointer;
     padding-left: 15px;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  #finish{
+    flex-direction: column;
   }
 
   #menu{
@@ -209,6 +240,7 @@ body{
     align-items: center;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
   }
 
   #menu svg{
@@ -305,6 +337,18 @@ body{
     display: flex;
     flex-direction: column;
     height: calc(100vh - 100px);
+    flex-grow: 1;
+  }
+
+  #finish{
+    overflow: show;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px);
+  }
+
+  #titular{
+    flex-grow: 1;
   }
 
   #titles{
@@ -387,6 +431,10 @@ body{
     filter: blur(10px);
   }
 
+  #finish.show{
+    filter: blur(10px);
+  }
+
   .navlinks{
     display: flex;
     flex-direction: column;
@@ -422,11 +470,20 @@ body{
     height: calc(100vh - 194px);
   }
 
+  #finish{
+    height: calc(100vh - 194px);
+  }
+
   #game{
     height: calc(100vh - 224px);
   }
 
   #home{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #finish{
     display: flex;
     flex-direction: column;
   }
@@ -536,6 +593,7 @@ a{
   border-width: 1px;
   -ms-flex-align: center;
   display: flex;
+  gap: 8px;
   flex-direction: column;
   height: auto;
   width: 80%;
@@ -560,11 +618,12 @@ a{
   border-width: 1px;
   -ms-flex-align: center;
   display: flex;
+  gap: 8px;
   flex-direction: column;
   height: auto;
   width: 80%;
-  margin-top: 10%;
-  margin-bottom: 30%;
+  margin-top: 0;
+  margin-bottom: 30px;
   margin-left: 0;
   margin-right: 0;
   border-radius: 25px;
@@ -652,7 +711,6 @@ code{
   padding-left: 15px;
   background: linear-gradient(270deg,rgba(1, 117, 204, 1) 0%, rgba(27, 161, 246, 1) 50%, rgba(13, 163, 248, 1) 100%);
   width: auto;
-  margin-top: 8px;
   padding-right: 10px;
   border: 0px;
   cursor: pointer;
@@ -689,9 +747,8 @@ code{
   color: white;
   height: 55px;
   padding-left: 15px;
-  background: linear-gradient(270deg,rgb(247, 225, 83) 0%, rgb(255, 220, 64) 50%, rgb(252, 193, 105) 100%);
+  background: linear-gradient(270deg,rgb(255, 124, 233) 0%, rgb(250, 139, 204) 50%, rgb(252, 105, 166) 100%);
   width: auto;
-  margin-top: 8px;
   padding-right: 10px;
   border: 0px;
   cursor: pointer;
@@ -724,6 +781,24 @@ code{
 }
 
 .buttoncontinue:focus {
+  outline: 0px;
+}
+
+.buttoncontinue:disabled {
+  cursor: not-allowed;
+  opacity: 50%;
+}
+
+
+.buttonfinish:enabled:hover{
+  transform: scale(1.02);
+}
+
+.buttonfinish:enabled:active{
+  transform: scale(0.98); 
+}
+
+.buttonfinish:focus {
   outline: 0px;
 }
 
@@ -780,6 +855,10 @@ body.fade-out {
   resize: none;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+#codigo:disabled{
+  cursor: not-allowed;
 }
 
 

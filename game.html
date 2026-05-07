@@ -65,8 +65,8 @@
                 <p class="paragraph" id="subtit">"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."</p>
                 <p class="paragraph" id="acc">Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.</p>
                 <div class="helper">
-                    <div class="counter">0:00.000 <code>0/5</code></div>
-                    <button class="buttonhelp" id="send" type="button" onclick="Despliegue()">
+                    <div class="counter"><span id="stopwatch">0:00.000</span><code id="nivelmax">0/2</code></div>
+                    <button class="buttonhelp" id="despliegue" type="button" onclick="Despliegue()">
                     <span class="button-text">Ayuda</span>
                     <img class="icon" src="/src/media/helpicon.png">
                     </button>
@@ -79,10 +79,107 @@
                     <span class="button-text">Verificar</span>
                     <img class="icon" src="/src/media/check.png">
                     </button> 
+                    <button class="buttoncontinue" id="nextlvl" type="button" onclick="siguienteNivel()" style="display: none;">
+                    <span class="button-text">Siguiente Nivel</span>
+                    <img class="icon" src="/src/media/continue-default.png">
+                    </button> 
+                    <button class="buttonfinish" id="buttonfinish" type="button" style="display: none;" onclick="location.href='/finishline.html'">
+                    <span class="button-text">Finalizar</span>
+                    <img class="icon" src="/src/media/finish.png">
+                    </button> 
                     <div class="console" id="consola"><span class="system-msg">> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
                 </div>
             </div>
         </div>
+        <script>
+            let startTime;
+let elapsedTime = 0;
+let timerInterval;
+
+const display = document.getElementById('stopwatch');
+
+function formatTime(ms) {
+    let milliseconds = Math.floor(ms % 1000);
+    let seconds = Math.floor((ms / 1000) % 60);
+    let minutes = Math.floor((ms / (1000 * 60)) % 60);
+
+    // Padding with zeros for consistent width
+    let m = String(minutes).padStart(2, '0');
+    let s = String(seconds).padStart(2, '0');
+    let msDisplay = String(milliseconds).padStart(3, '0');
+
+    return `${m}:${s}:${msDisplay}`;
+}
+
+function start() {
+    if (!timerInterval) {
+        startTime = Date.now() - elapsedTime;
+        timerInterval = setInterval(() => {
+            elapsedTime = Date.now() - startTime;
+            display.textContent = formatTime(elapsedTime);
+        }, 10); // Update every 10ms for smooth display
+    }
+}
+
+function stop() {
+    clearInterval(timerInterval);
+    timerInterval = null;
+}
+
+function reset() {
+    stop();
+    elapsedTime = 0;
+    display.textContent = "00:00:000";
+}
+document.getElementById('codigo').addEventListener('click', start);
+        </script>
+
+        <!-- scripts en linea para no cargar el servidor, gracias vercel por tanto perdon por tan poco -->
+
+        <script>
+            const editor = document.getElementById('codigo');
+
+        editor.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                e.preventDefault(); 
+                
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
+            
+                const indentacion = "    "; 
+                
+                this.value = this.value.substring(0, start) + indentacion + this.value.substring(end);
+                
+                this.selectionStart = this.selectionEnd = start + indentacion.length;
+            }
+            
+            if (e.key === 'Enter') {
+                e.preventDefault(); 
+                
+                const start = this.selectionStart;
+                const textoAntesCursor = this.value.substring(0, start);
+                
+             
+                const inicioLineaActual = textoAntesCursor.lastIndexOf('\n') + 1;
+                const lineaActual = textoAntesCursor.substring(inicioLineaActual);
+                
+              
+                const coincidencia = lineaActual.match(/^\s*/);
+                let espaciosPrevios = coincidencia ? coincidencia[0] : "";
+                
+                if (lineaActual.trimEnd().endsWith(':')) {
+                    espaciosPrevios += "    ";
+                }
+                
+                
+                const textoAInsertar = "\n" + espaciosPrevios;
+                this.value = this.value.substring(0, start) + textoAInsertar + this.value.substring(this.selectionEnd);
+                
+                this.selectionStart = this.selectionEnd = start + textoAInsertar.length;
+            }
+        });
+        </script>
+
         <script>
             let pyodide;
         
@@ -91,7 +188,7 @@
             pyodide = await loadPyodide({
 
                 stdout: (texto) => {
-                    consola.innerHTML += texto + '\n';
+                    consola.innerHTML += texto + '<br>';
                     consola.scrollTop = consola.scrollHeight;
                 }
             });
@@ -105,14 +202,14 @@
                 filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',
                 enunciado: 'Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.',
                 codigoInicial: "def encontrar_motor():\n    # Escribe tu código aquí\n    pass",
-                // Este script se ejecuta en Python "por detrás" para validar
                 testPython: `
-try:
-    print(encontrar_motor())
-except NameError:
-    False
-except Exception:
-    False
+def _test_lvl1():
+    try:
+        print(encontrar_motor())
+        return encontrar_motor() == "Primer Motor"
+    except:
+        return False
+_test_lvl1()
 `
             },
             {
@@ -121,16 +218,14 @@ except Exception:
                 enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
                 codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
                 testPython: `
-try:
-    obj = Ente()
-    # Verificamos si el método existe llamándolo
-    # Si imprime algo, se capturará en stdout, pero la evaluación de éxito es que no arroje error
-    obj.actualizar()
-    True
-except AttributeError:
-    False
-except Exception:
-    False
+def _test_lvl2():
+    try:
+        obj = Ente()
+        obj.actualizar()
+        return True
+    except:
+        return False
+_test_lvl2()
 `
             }
         ];
@@ -151,6 +246,7 @@ except Exception:
         async function verificarCodigo() {
             const codigoUsuario = document.getElementById('codigo').value;
             const consola = document.getElementById('consola');
+            const wins = document.getElementById('nivelmax');
 
             consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span><br>";
 
@@ -161,13 +257,25 @@ except Exception:
                 const testCode = niveles[nivelActual].testPython;
                 const esCorrecto = await pyodide.runPythonAsync(testCode);
 
+                console.log(testCode)
+                console.log(esCorrecto)
+
                 if (esCorrecto) {
                     consola.innerHTML += "<span class='correct'>> Adecuación confirmada. Lógica correcta.</span><br>";
+                    wins.innerHTML = nivelActual+1 + `/${niveles.length}`;
+                    document.getElementById("codigo").disabled = true;
+                    stop()
                     
                     if (nivelActual < niveles.length - 1) {
-                        btnSiguiente.style.display = "block";
+                        document.getElementById("nextlvl").style.display = 'flex';
+                        document.getElementById("send").style.display = 'none';
+
                     } else {
-                        feedback.innerText = "¡Felicidades! Has completado todas las vías.";
+                        consola.innerHTML += "¡Felicidades! Has completado todas las vías.";
+                        localStorage.setItem("time", `${document.getElementById("stopwatch").innerHTML}`)
+                        localStorage.setItem("wins", `${document.getElementById("nivelmax").innerHTML}`)
+                        document.getElementById("buttonfinish").style.display = 'flex';
+                        document.getElementById("send").style.display = 'none';
                     }
                 } else {
                     consola.innerHTML += "<span class='incorrect'>> El agente no ha alcanzado su fin. Revisa las instrucciones.</span><br>";
@@ -179,6 +287,9 @@ except Exception:
 
         function siguienteNivel() {
             nivelActual++;
+            document.getElementById("codigo").disabled = false;
+            document.getElementById("send").style.display = 'flex';
+            document.getElementById("nextlvl").style.display = 'none';
             cargarNivel();
         }
 

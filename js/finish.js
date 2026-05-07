@@ -13,7 +13,7 @@ botones.addEventListener('click', function() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
   document.body.classList.add('fade-in');
-  subtitle.innerHTML = `Felicidades ${localStorage.getItem("username")} has logrado resolver <code>5/7</code> problemas logicos de codigo, lo lograste en: <code>5:30.123</code>.`;
-  leaderboard.innerHTML = `🥇 | ${localStorage.getItem("username")}<br>🥈 | Juan<br>🥉 | Ana`;
+  subtitle.innerHTML = `Felicidades ${localStorage.getItem("username")} has logrado resolver <code>${localStorage.getItem("wins")}</code> problemas logicos de codigo, lo lograste en: <code>${localStorage.getItem("time")}</code>.`;
+  leaderboard.innerHTML = `🥇 <code>${localStorage.getItem("time")}</code> | ${localStorage.getItem("username")}<br>🥈 <code>0:00.000</code>  | Juan<br>🥉 <code>0:00.000</code> | Ana`;
   console.log("loaded");
 });
