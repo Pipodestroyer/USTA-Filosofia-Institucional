@@ -336,7 +336,7 @@ body{
     overflow: show;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
     flex-grow: 1;
   }
 
@@ -344,7 +344,7 @@ body{
     overflow: show;
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 100px);
+    height: calc(100dvh - 100px);
   }
 
   #titular{
