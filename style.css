@@ -817,6 +817,7 @@ body.fade-out {
   width: auto;
   overflow-x: hidden;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .buttonhelp{
