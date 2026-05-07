@@ -193,6 +193,7 @@ body{
     padding-top: 25px;
     cursor: pointer;
     padding-left: 15px;
+    -webkit-tap-highlight-color: transparent;
   }
 
   #menu{
@@ -207,6 +208,7 @@ body{
     position: relative;
     align-items: center;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 
   #menu svg{
