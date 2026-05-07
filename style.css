@@ -375,7 +375,6 @@ body{
     box-sizing: border-box;
     padding: 15px 10%;
     z-index: 99;
-    height: 100px;
     margin-top: 0;
     top: 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -467,15 +466,15 @@ body{
 @media only screen and (min-width: 923px) {
 
   #home{
-    height: calc(100vh - 194px);
+    height: calc(100vh - min(194px, 10vh));
   }
 
   #finish{
-    height: calc(100vh - 194px);
+    height: calc(100vh - min(194px, 10vh));
   }
 
   #game{
-    height: calc(100vh - 224px);
+    height: calc(100vh - min(224px, 20vh));
   }
 
   #home{
@@ -504,7 +503,7 @@ body{
     display: flex;
     justify-content: space-between;
     z-index: 99;
-    height: 100px;
+    height: clamp(50px, 10vh, 100px);
     align-items: center;
     padding: 15px 10%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -514,7 +513,7 @@ body{
   } 
 
   .logimage{
-    width: 300px;
+    width: clamp(150px, 10vh, 300px);
     height: auto;
     cursor: pointer;
   }
