@@ -514,7 +514,7 @@ body{
   } 
 
   .logimage{
-    width: clamp(150px, 10vh, 300px);
+    width: clamp(150px, 20vh, 300px);
     height: auto;
     cursor: pointer;
   }
