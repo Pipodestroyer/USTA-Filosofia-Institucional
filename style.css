@@ -381,6 +381,7 @@ body{
     position: fixed;
     z-index: 10;
     flex-wrap: wrap;
+    height: 100px;
     background-color: var(--base-color);
   } 
 
