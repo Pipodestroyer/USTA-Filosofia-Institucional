@@ -14,7 +14,7 @@ botones.addEventListener('click', function() {
             document.body.classList.remove('fade-in');
             setTimeout(() =>{
                 localStorage.setItem("username", `${definput.value}`)
-                window.location.href = "game.html";
+                window.location.href = "game";
         }, 1000);
     
 });
