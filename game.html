@@ -58,18 +58,35 @@
 
         <div id="overlay" onclick="disableDropdown()"></div>
 
+        <div id="tutorial-overlay" style="display: none;"></div>
+
+<div id="tutorial-prompt" class="form tutorial-box" style="display: none;">
+    <h2 class="statstitle" style="margin-bottom: 10px;">¿Eres nuevo aquí?</h2>
+    <p class="paragraph">¿Te gustaría un breve recorrido por la interfaz del motor?</p>
+    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+        <button class="buttonnext" onclick="startTutorial()" style="height: 45px; font-size: 16px;">Sí, por favor</button>
+        <button class="buttonfinish" onclick="endTutorial()" style="height: 45px; font-size: 16px;">Saltar</button>
+    </div>
+</div>
+
+<div id="tutorial-tooltip" class="form tutorial-box" style="display: none;">
+    <p id="tutorial-text" class="paragraph" style="min-height: 50px;">Texto de explicación...</p>
+    <div class="tutorial-nav">
+        <button class="circle-btn" onclick="prevStep()" id="btn-prev"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg></button>
+        <code id="tutorial-counter">1/4</code>
+        <button class="circle-btn" onclick="nextStep()" id="btn-next"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></button>
+    </div>
+</div>
+
 
         <div class="container" id="game">
             <div class="container" id="gameinner">
                 <h1 class="title" id="tit">La Primera Vía: El Primer Motor</h1>
                 <p class="paragraph" id="subtit">"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."</p>
                 <p class="paragraph" id="acc">Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.</p>
-                <div class="helper">
-                    <div class="counter"><span id="stopwatch">0:00.000</span><code id="nivelmax">0/2</code></div>
-                    <button class="buttonhelp" id="despliegue" type="button" onclick="Despliegue()">
-                    <span class="button-text">Ayuda</span>
-                    <img class="icon" src="/src/media/helpicon.png">
-                    </button>
+                <div class="helper" id="helper-box">
+                    <div class="counter" id="counter-box"><span id="stopwatch">0:00.000</span><code id="nivelmax">0/2</code></div>
+                    <button class="buttonhelp" id="despliegue" type="button" onclick="Despliegue()"><img class="icon" src="/src/media/helpicon.png"></button>
                 </div>
             </div>
             <div class="uppergame" id="gameupper">

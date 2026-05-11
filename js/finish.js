@@ -6,7 +6,7 @@ botones.addEventListener('click', function() {
         document.body.classList.add('fade-out');
             document.body.classList.remove('fade-in');
             setTimeout(() =>{
-                window.location.href = "index.html";
+                window.location.href = "/";
         }, 1000);
     
 });

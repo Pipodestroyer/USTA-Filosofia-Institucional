@@ -47,6 +47,29 @@ body{
   overflow-x: hidden;
 }
 
+body.tutorial-on .formgame {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.tutorial-on #game {
+    overflow: visible !important;
+}
+
+body.tutorial-on #gameinner {
+    overflow: visible !important;
+}
+
+body.tutorial-on .formgame,
+body.tutorial-on .helper {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.circle-btn svg{
+  fill: var(--secondary-text);
+}
+
 #headerswitch{
   flex: 1; 
   display: flex;
@@ -321,8 +344,8 @@ body{
   }
 
   .logimage{
-    width: 190px;
-    height:  auto;
+    width: clamp(200px, 32vw, 220px);
+    height: auto;
     cursor: pointer;
   }
 
@@ -497,7 +520,7 @@ body{
   }
 
   #titles{
-    flex-grow: 1;
+    flex-grow: 0.7;
   }
    
   .header{
@@ -514,7 +537,7 @@ body{
   } 
 
   .logimage{
-    width: clamp(150px, 20vh, 300px);
+    width: clamp(150px, 32vh, 300px);
     height: auto;
     cursor: pointer;
   }
@@ -673,13 +696,10 @@ a{
   margin-top: 0;
   margin-bottom: 0;
   border-radius: 25px;
-  padding-top: 30px;
+  padding: 20px 20px 20px 20px;
   box-sizing: border-box;
-  padding-bottom: 30px;
   justify-content: center;
   place-self: right;
-  padding-left: 30px;
-  padding-right: 30px;
   margin-left: 7%;
   margin-right: 7%;
   gap: 8px;
@@ -903,26 +923,25 @@ body.fade-out {
 
 .buttonhelp{
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
   border-radius: 10px; 
-  text-align: left;
+  text-align: center;
   transition: transform 0.2s, opacity 0.5s ease-in-out;
+  justify-content: center;
   font-weight: bold;
   font-size: 20px;
   color: white;
   height: auto;
-  padding-left: 15px;
   background: linear-gradient(270deg,rgb(245, 194, 99) 0%, rgb(241, 184, 59) 50%, rgb(255, 203, 60) 100%);
   width: auto;
-  padding-right: 10px;
+  padding: 0 5px 0 5px;
   border: 0px;
   cursor: pointer;
 }
 
 .icon{
-  height: 70%;
+  height: round(70%);
 }
 
 #leaderboard{
@@ -944,4 +963,88 @@ body.fade-out {
   user-select: none;
   outline-width: 0;
   outline: none;
+}
+
+#tutorial-prompt{
+  color: white;
+}
+
+#tutorial-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999; 
+}
+
+#tutorial-tooltip {
+    position: fixed;
+    z-index: 1001;
+    max-width: 300px;
+    width: 80%;
+    padding: 20px;
+    color: white;
+    transition: opacity 0.3s ease; 
+    pointer-events: auto;
+}
+
+#tutorial-text {
+    color: white !important; 
+    text-align: left;
+}
+
+.tutorial-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    text-align: center;
+    max-width: 400px;
+    width: 85%;
+    padding: 30px;
+}
+
+.tutorial-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.circle-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--base-variant); 
+    color: var(--text-color); 
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.circle-btn:hover {
+    transform: scale(1.1);
+}
+
+.circle-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: scale(1);
+}
+
+
+.tutorial-highlight {
+    position: relative !important;
+    z-index: 1000 !important;
+    outline: 4px solid #3b82f6 !important; 
+    outline-offset: 4px !important;
+    border-radius: 10px !important; 
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important;
+    background-color: var(--form) !important; 
 }
