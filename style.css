@@ -288,6 +288,14 @@ body.tutorial-on .helper {
     cursor: pointer;
   }
 
+  .tutorial-box{
+    text-align: left;
+  }
+
+  .tutorial-box p{
+    margin-left: 0;
+  }
+
   #mobile-themeswitch svg{
     fill: var(--secondary-text);
     position: absolute;
@@ -493,6 +501,14 @@ body.tutorial-on .helper {
     height: calc(100vh - min(194px, 10vh));
   }
 
+  .tutorial-box{
+    text-align: center;
+  }
+
+  #button-holder{
+    justify-content: center;
+  }
+
   #finish{
     height: calc(100vh - min(194px, 10vh));
   }
@@ -691,7 +707,7 @@ a{
   border-width: 1px;
   -ms-flex-align: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: calc(100% - 14%);
   margin-top: 0;
   margin-bottom: 0;
@@ -704,6 +720,15 @@ a{
   margin-right: 7%;
   gap: 8px;
   flex: 0;
+}
+
+.main-helper{
+  display: flex;
+  gap: 8px;
+  flex: 0;
+  margin: 0;
+  padding: 0;
+  flex-direction: row;
 }
 
 .button-link{
@@ -1000,9 +1025,7 @@ body.fade-out {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
-    text-align: center;
-    max-width: 400px;
-    width: 85%;
+    width: clamp(200px, 75vw, 400px);
     padding: 30px;
 }
 
@@ -1018,7 +1041,7 @@ body.fade-out {
     height: 40px;
     border-radius: 50%;
     border: none;
-    background-color: var(--base-variant); 
+    background-color: var(--base-variant);
     color: var(--text-color); 
     font-size: 18px;
     cursor: pointer;
@@ -1038,13 +1061,12 @@ body.fade-out {
     transform: scale(1);
 }
 
-
 .tutorial-highlight {
     position: relative !important;
     z-index: 1000 !important;
     outline: 4px solid #3b82f6 !important; 
     outline-offset: 4px !important;
     border-radius: 10px !important; 
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important; 
     background-color: var(--form) !important; 
 }

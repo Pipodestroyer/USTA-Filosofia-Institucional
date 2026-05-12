@@ -1,5 +1,11 @@
 const botones = document.getElementById('send');
 const definput = document.getElementById('codigo');
+const helper =  document.getElementById('despliegue');
+const boxtosize = document.getElementById('helper-box');
+const docs = document.getElementById('buttons-helper');
+const tipping = document.getElementById('buttons-helper-tip');
+const tosizeup = document.getElementById('game');
+
 
 const tutorialSteps = [
     {
@@ -33,6 +39,10 @@ const tutorialSteps = [
     {
         elementId: 'consola', 
         text: 'En la consola observarás el output de Python y los mensajes del sistema.'
+    },
+    {
+        elementId: 'game',
+        text: 'Recuerda, si cierras esta ventana, ¡perderas todo tu progreso!.'
     }
 ];
 
@@ -48,6 +58,7 @@ function checkFirstVisit() {
 function startTutorial() {
     document.body.classList.add('tutorial-on');
     document.getElementById('codigo').disabled = true;
+     document.getElementById('tutorial-overlay').style.display = 'block';
     document.getElementById('tutorial-prompt').style.display = 'none';
     document.getElementById('tutorial-tooltip').style.display = 'flex';
     showStep(0);
@@ -56,6 +67,7 @@ function startTutorial() {
 function endTutorial() {
     document.body.classList.remove('tutorial-on');
     document.getElementById('codigo').disabled = false;
+     document.getElementById('tutorial-overlay').style.display = 'none';
     document.getElementById('tutorial-overlay').style.display = 'none';
     document.getElementById('tutorial-prompt').style.display = 'none';
     document.getElementById('tutorial-tooltip').style.display = 'none';
@@ -170,9 +182,41 @@ function manage(){
     }
 }
 
+function Despliegue(){
+    const isMobile = window.innerWidth <= 923; 
+    const isTiny = window.innerHeight <= 600; 
+    if(!localStorage.getItem('desplegado')){
+        localStorage.setItem('desplegado', "true")
+        boxtosize.style.flexWrap = 'warp';
+        docs.style.display = 'flex';
+        tipping.style.display = 'flex';
+        if(!isMobile && isTiny){
+            const newsizing = boxtosize.offsetHeight;
+            tosizeup.style.height = `calc(100vh - min(224px, 20vh) + ${newsizing-65}px)`;
+        }
+        if(isMobile){
+            tosizeup.style.height = 'auto';
+        }
+    } else if(localStorage.getItem('desplegado')) {
+        if(!isMobile){
+            const newsizing = boxtosize.offsetHeight;
+            tosizeup.style.height = `calc(100vh - min(224px, 20vh)`;
+        }
+        if(isMobile){
+            tosizeup.style.height = 'auto';
+        }
+        boxtosize.style.flexWrap = 'never';
+        docs.style.display = 'none';
+        tipping.style.display = 'none';
+        localStorage.removeItem('desplegado');
+    }
+}
+
 definput.addEventListener('input', manage);
 
 document.addEventListener('DOMContentLoaded', (event) => {
   document.body.classList.add('fade-in');
-    botones.disabled = true;
+  docs.style.display = 'none';
+  tipping.style.display = 'none';
+  botones.disabled = true;
 });
