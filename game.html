@@ -90,11 +90,11 @@
                         <button class="buttonhelp" id="despliegue" type="button" onclick="Despliegue()"><img class="icon" src="/src/media/helpicon.png"></button>
                     </div>
                     <div class="main-helper" id="buttons-helper-tip">
-                        <div class="counter" id="counter-box">> Placeholder</div>
+                        <div class="counter" id="counter-box"><span id="tip-modifier">> Placeholder</span></div>
                     </div>
                     <div class="main-helper" id="buttons-helper" style="flex: 1; flex-wrap:wrap;">
                         <button class="buttonnext" id="documentation" onclick="startTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Python docs</button>
-                        <button class="buttoncontinue" id="tip" onclick="endTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Pista</button>
+                        <button class="buttoncontinue" id="tip" onclick="clued()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Pista</button>
                         <button class="buttonfinish" id="tip" onclick="startTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Tutorial</button>
                     </div>         
                 </div>
@@ -229,6 +229,7 @@ document.getElementById('codigo').addEventListener('click', start);
                 filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',
                 enunciado: 'Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.',
                 codigoInicial: "def encontrar_motor():\n    # Escribe tu código aquí\n    pass",
+                clue: "Piensa en algo que siempre ha estado ahí, sin necesidad de ser movido por otro.",
                 testPython: `
 def _test_lvl1():
     try:
@@ -244,6 +245,7 @@ _test_lvl1()
                 filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
                 enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
                 codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+                clue: "La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?",
                 testPython: `
 def _test_lvl2():
     try:
@@ -313,11 +315,16 @@ _test_lvl2()
         }
 
         function siguienteNivel() {
-            nivelActual++;
+            nivelActual++; 
             document.getElementById("codigo").disabled = false;
             document.getElementById("send").style.display = 'flex';
             document.getElementById("nextlvl").style.display = 'none';
             cargarNivel();
+        }
+
+        function clued(){
+            const nivel = niveles[nivelActual].clue;
+            document.getElementById('tip-modifier').innerText = `> ${nivel}`;
         }
 
 
