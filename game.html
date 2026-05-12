@@ -25,7 +25,7 @@
                 <ul class="navlinks">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/src/media/filosofia (1).pdf" target="_blank">Metodologia</a></li>
-                    <li><a href="https://www.ustavillavicencio.edu.co/">Usta</a></li>
+                    <li><a href="https://www.ustavillavicencio.edu.co/" target="_blank">Usta</a></li>
                 </ul>
             </nav>
             <div id="headerswitch">
@@ -44,7 +44,7 @@
                 <ul class="navlinks">
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/src/media/filosofia (1).pdf" target="_blank">Metodologia</a></li>
-                    <li><a href="https://www.ustavillavicencio.edu.co/">Usta</a></li>
+                    <li><a href="https://www.ustavillavicencio.edu.co/" target="_blank">Usta</a></li>
                 </ul>
             </nav>
             <div id="mobile-headerswitch">
@@ -95,7 +95,7 @@
                     <div class="main-helper" id="buttons-helper" style="flex: 1; flex-wrap:wrap;">
                         <button class="buttonnext" id="documentation" onclick="startTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Python docs</button>
                         <button class="buttoncontinue" id="tip" onclick="clued()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Pista</button>
-                        <button class="buttonfinish" id="tip" onclick="startTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Tutorial</button>
+                        <button class="buttonfinish" id="tip" onclick="pythondocs()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Tutorial</button>
                     </div>         
                 </div>
             </div>
@@ -229,7 +229,8 @@ document.getElementById('codigo').addEventListener('click', start);
                 filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',
                 enunciado: 'Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.',
                 codigoInicial: "def encontrar_motor():\n    # Escribe tu código aquí\n    pass",
-                clue: "Piensa en algo que siempre ha estado ahí, sin necesidad de ser movido por otro.",
+                docs:"https://docs.python.org/3/tutorial/index.htmlhttps://www.w3schools.com/python/python_functions.asp",
+                clue: ["Piensa en algo que siempre ha estado ahí, sin necesidad de ser movido por otro.", "¿Qué podría ser el origen de todo movimiento sin ser movido por algo más?", "return ..."],
                 testPython: `
 def _test_lvl1():
     try:
@@ -245,7 +246,8 @@ _test_lvl1()
                 filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
                 enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
                 codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
-                clue: "La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?",
+                docs: "https://www.w3schools.com/python/python_classes.asp",
+                clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
                 testPython: `
 def _test_lvl2():
     try:
@@ -267,6 +269,7 @@ _test_lvl2()
             document.getElementById('subtit').innerText = nivel.filosofia;
             document.getElementById('acc').innerHTML = nivel.enunciado;
             document.getElementById('codigo').value = nivel.codigoInicial;
+            document.getElementById('tip-modifier').innerText = "> ..."
             if (pyodide) {
                 document.getElementById('consola').innerHTML = "<span class='system-msg'>> Esperando ejecución...</span><br>";
             }
@@ -324,9 +327,12 @@ _test_lvl2()
 
         function clued(){
             const nivel = niveles[nivelActual].clue;
-            document.getElementById('tip-modifier').innerText = `> ${nivel}`;
+            document.getElementById('tip-modifier').innerText = `> ${nivel[Math.floor(Math.random() * nivel.length)]}`;
         }
 
+        function pythondocs(){
+            window.open(`${niveles[nivelActual].docs}`, "_blank");
+        }
 
         initPyodide();
         </script>
