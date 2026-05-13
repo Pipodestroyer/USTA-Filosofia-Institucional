@@ -212,6 +212,50 @@ function Despliegue(){
     }
 }
 
+const editor = document.getElementById('codigo');
+
+editor.addEventListener('paste', (e) => {
+  e.preventDefault();
+});
+
+editor.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+        e.preventDefault(); 
+                
+        const start = this.selectionStart;
+        const end = this.selectionEnd;
+            
+        const indentacion = "    "; 
+                
+        this.value = this.value.substring(0, start) + indentacion + this.value.substring(end);
+                
+        this.selectionStart = this.selectionEnd = start + indentacion.length;
+    }
+            
+    if (e.key === 'Enter') {
+        e.preventDefault(); 
+                
+        const start = this.selectionStart;
+        const textoAntesCursor = this.value.substring(0, start);         
+             
+        const inicioLineaActual = textoAntesCursor.lastIndexOf('\n') + 1;
+        const lineaActual = textoAntesCursor.substring(inicioLineaActual);
+                
+        const coincidencia = lineaActual.match(/^\s*/);
+        let espaciosPrevios = coincidencia ? coincidencia[0] : "";
+                
+        if (lineaActual.trimEnd().endsWith(':')) {
+            espaciosPrevios += "    ";
+        }
+                
+                
+        const textoAInsertar = "\n" + espaciosPrevios;
+        this.value = this.value.substring(0, start) + textoAInsertar + this.value.substring(this.selectionEnd);
+                
+        this.selectionStart = this.selectionEnd = start + textoAInsertar.length;
+    }
+});
+
 definput.addEventListener('input', manage);
 
 document.addEventListener('DOMContentLoaded', (event) => {
