@@ -24,7 +24,7 @@
 }
 
 .darkmode{
-    --base-color: rgb(31, 31, 31);
+    --base-color: rgb(27, 27, 27);
     --base-variant: #252525;
     --text-color: rgb(255, 255, 255);
     --secondary-text: #ffffff;
@@ -92,6 +92,18 @@ body.tutorial-on .helper {
   align-items: center;
   cursor: pointer;
   user-select: none;
+}
+
+.droppedlinks li{
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0px 20px;
+}
+
+.droppedlinks svg{
+  height: 19px;
+  fill: var(--secondary-text);
 }
 
 #themeswitch svg{
@@ -256,7 +268,7 @@ body.tutorial-on .helper {
     padding: 0;
     border-width: 0px;
     border-radius: 50%;
-    background-color: var(--base-variant);
+    background-color: var(--base-color);
     overflow: hidden;
     justify-content: center;
     position: relative;
@@ -269,7 +281,7 @@ body.tutorial-on .helper {
   #menu svg{
     fill: var(--secondary-text);
     position: absolute;
-    right: 25%;
+    right: 0;
     bottom: 25%;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
@@ -352,13 +364,13 @@ body.tutorial-on .helper {
   }
 
   .logimage{
-    width: clamp(200px, 32vw, 220px);
+    width: 150px;
     height: auto;
     cursor: pointer;
   }
 
   body{
-    margin-top: 130px;
+    margin-top: calc(73.594px + 30px);
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -408,11 +420,10 @@ body.tutorial-on .helper {
     z-index: 99;
     margin-top: 0;
     top: 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: fixed;
     z-index: 10;
     flex-wrap: wrap;
-    height: 100px;
+    height: auto;
     background-color: var(--base-color);
   } 
 
@@ -447,7 +458,7 @@ body.tutorial-on .helper {
   } 
 
   .mobile-dropdown.show{
-    top: 100px;
+    top: 73.594px;
   }
 
   .mobile-dropdown.show ~ #overlay{
@@ -464,6 +475,13 @@ body.tutorial-on .helper {
 
   #finish.show{
     filter: blur(10px);
+  }
+
+  #indexbuttons button{
+    flex: 1;
+    height: auto;
+    width: auto;
+    padding: 14px;
   }
 
   .navlinks{
@@ -501,8 +519,17 @@ body.tutorial-on .helper {
     height: calc(100vh - min(194px, 10vh));
   }
 
+  .navlinks li{
+  display: inline-block;
+  padding: 0px 20px;
+  }
+
   .tutorial-box{
     text-align: center;
+  }
+
+  #indexbuttons button{
+    flex: 1;
   }
 
   #button-holder{
@@ -613,11 +640,6 @@ a{
   margin: 0;
   justify-content: center;
   padding: 0;
-}
-
-.navlinks li{
-  display: inline-block;
-  padding: 0px 20px;
 }
 
 .navlinks li a:hover{
@@ -1027,6 +1049,16 @@ body.fade-out {
     z-index: 1001;
     width: clamp(200px, 75vw, 400px);
     padding: 30px;
+}
+
+.sendresults{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  width: clamp(200px, 75vw, 400px);
+  padding: 30px;
 }
 
 .tutorial-nav {
