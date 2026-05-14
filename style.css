@@ -99,7 +99,7 @@ body.tutorial-on .helper {
   justify-content: flex-start;
   gap: 10px;
   height: min-content;
-  padding: 0 20px;
+  padding: 0;
 }
 
 .droppedlinks svg{
@@ -254,7 +254,7 @@ body.tutorial-on .helper {
     display: flex;
     padding-top: 25px;
     cursor: pointer;
-    padding-left: 15px;
+    padding-left: 0;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }
