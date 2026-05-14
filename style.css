@@ -256,7 +256,7 @@ body.tutorial-on .helper {
     padding: 0;
     border-width: 0px;
     border-radius: 50%;
-    background-color: var(--base-variant);
+    background-color: var(--base-color);
     overflow: hidden;
     justify-content: center;
     position: relative;
@@ -269,7 +269,7 @@ body.tutorial-on .helper {
   #menu svg{
     fill: var(--secondary-text);
     position: absolute;
-    right: 25%;
+    right: 0;
     bottom: 25%;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   }
@@ -352,13 +352,13 @@ body.tutorial-on .helper {
   }
 
   .logimage{
-    width: clamp(200px, 32vw, 220px);
+    width: 150px;
     height: auto;
     cursor: pointer;
   }
 
   body{
-    margin-top: 130px;
+    margin-top: calc(73.594px + 30px);
     overflow-y: auto;
     overflow-x: hidden;
   }
@@ -411,7 +411,7 @@ body.tutorial-on .helper {
     position: fixed;
     z-index: 10;
     flex-wrap: wrap;
-    height: 100px;
+    height: auto;
     background-color: var(--base-color);
   } 
 
@@ -446,7 +446,7 @@ body.tutorial-on .helper {
   } 
 
   .mobile-dropdown.show{
-    top: 100px;
+    top: 73.594px;
   }
 
   .mobile-dropdown.show ~ #overlay{
