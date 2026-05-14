@@ -98,6 +98,7 @@ body.tutorial-on .helper {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
+  height: 19px;
   padding: 0px 20px;
 }
 
@@ -489,6 +490,7 @@ body.tutorial-on .helper {
     flex-direction: column;
     gap: 25px;
     width: 100%;
+    font-size: 19px;
   }
 
   .formgame{
@@ -777,6 +779,44 @@ code{
   height: 55px;
   padding-left: 15px;
   background: linear-gradient(270deg,rgba(1, 117, 204, 1) 0%, rgba(27, 161, 246, 1) 50%, rgba(13, 163, 248, 1) 100%);
+  width: auto;
+  padding-right: 10px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.buttonimportant{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px; 
+  text-align: left;
+  transition: transform 0.2s, opacity 0.5s ease-in-out;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  height: 55px;
+  padding-left: 15px;
+  background: linear-gradient(270deg,rgb(204, 48, 1) 0%, rgb(246, 89, 27) 50%, rgb(248, 40, 13) 100%);
+  width: auto;
+  padding-right: 10px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.buttonyellow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px; 
+  text-align: left;
+  transition: transform 0.2s, opacity 0.5s ease-in-out;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  height: 55px;
+  padding-left: 15px;
+  background: linear-gradient(270deg,rgb(204, 157, 1) 0%, rgb(246, 231, 27) 50%, rgb(248, 244, 13) 100%);
   width: auto;
   padding-right: 10px;
   border: 0px;

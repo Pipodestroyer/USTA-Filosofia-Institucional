@@ -288,11 +288,14 @@ editor.addEventListener('keydown', function(e) {
 definput.addEventListener('input', manage);
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  document.body.classList.add('fade-in');
-  docs.style.display = 'none';
-  tipping.style.display = 'none';
-  botones.disabled = true;
-  enviarnombre.disabled = true;
+    if(localStorage.getItem('desplegado')){
+        Despliegue();
+    }
+    document.body.classList.add('fade-in');
+    docs.style.display = 'none';
+    tipping.style.display = 'none';
+    botones.disabled = true;
+    enviarnombre.disabled = true;
 });
 
 let startTime;
@@ -449,6 +452,9 @@ function siguienteNivel() {
     document.getElementById("codigo").disabled = false;
     document.getElementById("send").style.display = 'flex';
     document.getElementById("nextlvl").style.display = 'none';
+    if(localStorage.getItem('desplegado')){
+        Despliegue();
+    }
     cargarNivel();
 }
 
