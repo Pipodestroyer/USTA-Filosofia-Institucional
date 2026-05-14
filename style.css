@@ -466,6 +466,10 @@ body.tutorial-on .helper {
     filter: blur(10px);
   }
 
+  #indexbuttons button{
+    flex: 1;
+  }
+
   .navlinks{
     display: flex;
     flex-direction: column;
@@ -503,6 +507,10 @@ body.tutorial-on .helper {
 
   .tutorial-box{
     text-align: center;
+  }
+
+  #indexbuttons button{
+    flex: 1;
   }
 
   #button-holder{
