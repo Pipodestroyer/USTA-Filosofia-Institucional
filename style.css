@@ -163,6 +163,13 @@ body.tutorial-on .helper {
 
 .paragraph{
   font-weight: bold;
+  font-style: italic;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
+.explaination{
+  font-weight: normal;
   margin-left: 7%;
   margin-right: 7%;
 }
@@ -545,6 +552,10 @@ body.tutorial-on .helper {
   .paragraph{
     font-size: max(2.5vw, 15px);
   }
+
+  .explaination{
+    font-size: max(2.5vh, 16px);
+  }
 }
 
 @media only screen and (min-width: 923px) {
@@ -616,7 +627,6 @@ body.tutorial-on .helper {
     height: clamp(50px, 10vh, 100px);
     align-items: center;
     padding: 15px 10%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 10;
     flex-wrap: wrap;
@@ -653,6 +663,10 @@ body.tutorial-on .helper {
   }
 
   .paragraph{
+    font-size: max(2.5vh, 16px);
+  }
+
+  .explaination{
     font-size: max(2.5vh, 16px);
   }
 }
