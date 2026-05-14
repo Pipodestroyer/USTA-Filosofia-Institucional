@@ -1028,7 +1028,11 @@ body.fade-out {
 }
 
 .icon{
-  height: round(70%);
+  height: 70%;
+}
+
+.choose{
+  height: 90%;
 }
 
 #leaderboard{
