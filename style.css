@@ -467,6 +467,9 @@ body.tutorial-on .helper {
 
   #indexbuttons button{
     flex: 1;
+    height: auto;
+    width: auto;
+    padding: 14px;
   }
 
   .navlinks{
@@ -1034,6 +1037,16 @@ body.fade-out {
     z-index: 1001;
     width: clamp(200px, 75vw, 400px);
     padding: 30px;
+}
+
+.sendresults{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  width: clamp(200px, 75vw, 400px);
+  padding: 30px;
 }
 
 .tutorial-nav {
