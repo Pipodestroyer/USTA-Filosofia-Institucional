@@ -186,6 +186,26 @@ body.tutorial-on .helper {
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 }
 
+#tutorial{
+  background: url("/src/media/tutorial.png");
+  place-items: center;
+  overflow: hidden;
+  text-align: left;
+  z-index: -1;
+  background-size: cover;
+  border-width: 2px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-style: solid;
+  border-color: var(--border-color);
+  margin-top: 30px;
+  padding-top: 30px;
+  margin-left: min(50px, 3vw);
+  margin-right: min(50px, 3vw);
+  color: white;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+
 #game{
   background: url("/src/media/Game.png");
   display: flex;
@@ -384,6 +404,14 @@ body.tutorial-on .helper {
     flex-grow: 1;
   }
 
+  #tutorial{
+    overflow: show;
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh + 100px);
+    flex-grow: 1;
+  }
+
   #finish{
     overflow: show;
     display: flex;
@@ -470,6 +498,10 @@ body.tutorial-on .helper {
     filter: blur(10px);
   }
 
+  #tutorial.show{
+    filter: blur(10px);
+  }
+
   #game.show{
     filter: blur(10px);
   }
@@ -521,6 +553,10 @@ body.tutorial-on .helper {
     height: calc(100vh - min(194px, 10vh));
   }
 
+  #tutorial{
+    height: calc(100vh - min(194px, 10vh));
+  }
+
   .navlinks li{
   display: inline-block;
   padding: 0px 20px;
@@ -547,6 +583,11 @@ body.tutorial-on .helper {
   }
 
   #home{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #tutorial{
     display: flex;
     flex-direction: column;
   }
