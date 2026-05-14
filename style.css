@@ -408,7 +408,6 @@ body.tutorial-on .helper {
     z-index: 99;
     margin-top: 0;
     top: 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: fixed;
     z-index: 10;
     flex-wrap: wrap;
