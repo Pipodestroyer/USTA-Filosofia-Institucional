@@ -127,7 +127,6 @@ function showStep(index) {
                 tooltip.style.top = 'auto'; 
             }
             
-            // Hacemos scroll
             const yOffset = -120; 
             const y = targetEl.getBoundingClientRect().top + window.scrollY + yOffset;
             window.scrollTo({top: y, behavior: 'smooth'});
@@ -354,6 +353,60 @@ async function initPyodide() {
 }
 
 const niveles = [
+    {
+        titulo: "De Potencia a Acto",
+        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
+        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
+        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+        docs: "https://www.w3schools.com/python/python_classes.asp",
+        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
+        testPython: `
+def _test_lvl2():
+    try:
+        obj = Ente()
+        obj.actualizar()
+        return True
+    except:
+        return False
+_test_lvl2()
+`
+    },             
+    {
+        titulo: "De Potencia a Acto",
+        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
+        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
+        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+        docs: "https://www.w3schools.com/python/python_classes.asp",
+        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
+        testPython: `
+def _test_lvl2():
+    try:
+        obj = Ente()
+        obj.actualizar()
+        return True
+    except:
+        return False
+_test_lvl2()
+`
+    },
+    {
+        titulo: "De Potencia a Acto",
+        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
+        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
+        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+        docs: "https://www.w3schools.com/python/python_classes.asp",
+        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
+        testPython: `
+def _test_lvl2():
+    try:
+        obj = Ente()
+        obj.actualizar()
+        return True
+    except:
+        return False
+_test_lvl2()
+`
+    },
     {
         titulo: "La Primera Vía: El Primer Motor",
         filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',

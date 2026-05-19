@@ -200,6 +200,7 @@ body.tutorial-on .helper {
   z-index: -1;
   background-size: cover;
   border-width: 2px;
+  justify-content: flex-start;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border-style: solid;
@@ -437,6 +438,16 @@ body.tutorial-on .helper {
     flex-grow: 1;
   }
 
+  #tutorial-titles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.7;
+    flex-grow: 1;
+    text-align: left;
+  }
+
   .buttonwrapper{
     box-sizing: border-box;
     display: flex;
@@ -633,6 +644,16 @@ body.tutorial-on .helper {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-grow: 0.7;
+  }
+
+  #tutorial-titles{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    text-align: left;
     flex-grow: 0.7;
   }
    
