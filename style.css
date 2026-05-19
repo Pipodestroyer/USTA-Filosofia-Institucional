@@ -75,7 +75,6 @@ body.tutorial-on .helper {
   display: flex;
   justify-content: flex-end;
   width: 30%;
-  cursor: pointer;
   user-select: none;
 }
 
@@ -85,7 +84,7 @@ body.tutorial-on .helper {
   padding: 0;
   border-width: 0px;
   border-radius: 50%;
-  background-color: var(--base-variant);
+  background-color: var(--base-color);
   overflow: hidden;
   justify-content: center;
   position: relative;
@@ -110,7 +109,7 @@ body.tutorial-on .helper {
 #themeswitch svg{
   fill: var(--secondary-text);
   position: absolute;
-  right: 25%;
+  right: 0;
   bottom: 25%;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -175,6 +174,7 @@ body.tutorial-on .helper {
 
 #home{
   background: url("/src/media/download.png");
+  box-sizing: border-box;
   place-items: center;
   overflow: hidden;
   z-index: -1;
@@ -184,7 +184,7 @@ body.tutorial-on .helper {
   border-top-right-radius: 40px;
   border-style: solid;
   border-color: var(--border-color);
-  margin-top: 30px;
+  margin-top: 10px;
   padding-top: 30px;
   margin-left: min(50px, 3vw);
   margin-right: min(50px, 3vw);
@@ -279,7 +279,6 @@ body.tutorial-on .helper {
     flex: 1; 
     display: flex;
     padding-top: 25px;
-    cursor: pointer;
     padding-left: 0;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
@@ -324,7 +323,6 @@ body.tutorial-on .helper {
     justify-content: center;
     position: relative;
     align-items: center;
-    cursor: pointer;
   }
 
   .tutorial-box{
@@ -403,11 +401,12 @@ body.tutorial-on .helper {
   }
    
   #home{
-    overflow: show;
+    overflow: visible;
     display: flex;
     flex-direction: column;
-    height: calc(100dvh + 100px);
+    height: calc(100vh + 100px);
     flex-grow: 1;
+    padding-bottom: 30px;
   }
 
   #tutorial{
@@ -430,7 +429,24 @@ body.tutorial-on .helper {
   }
 
   #titles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.7;
     flex-grow: 1;
+  }
+
+  .buttonwrapper{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: 7%;
+    margin-right: 7%;
   }
    
   #game{
@@ -517,7 +533,6 @@ body.tutorial-on .helper {
   }
 
   #indexbuttons button{
-    flex: 1;
     height: auto;
     width: auto;
     padding: 14px;
@@ -560,7 +575,8 @@ body.tutorial-on .helper {
 @media only screen and (min-width: 923px) {
 
   #home{
-    height: calc(100vh - min(194px, 10vh));
+    height: calc(100vh - 103.59px) !important;
+    padding-bottom: 30px;
   }
 
   #tutorial{
@@ -574,10 +590,6 @@ body.tutorial-on .helper {
 
   .tutorial-box{
     text-align: center;
-  }
-
-  #indexbuttons button{
-    flex: 1;
   }
 
   #button-holder{
@@ -616,6 +628,11 @@ body.tutorial-on .helper {
   }
 
   #titles{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-grow: 0.7;
   }
    
@@ -623,7 +640,7 @@ body.tutorial-on .helper {
     display: flex;
     justify-content: space-between;
     z-index: 99;
-    height: clamp(50px, 10vh, 100px);
+    height: 73.594px;
     align-items: center;
     padding: 15px 10%;
     position: relative;
@@ -631,9 +648,19 @@ body.tutorial-on .helper {
     flex-wrap: wrap;
   } 
 
+  .buttonwrapper{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .logimage{
-    width: clamp(150px, 32vh, 300px);
-    height: auto;
+    height: 70px;
     cursor: pointer;
   }
 
