@@ -75,7 +75,6 @@ body.tutorial-on .helper {
   display: flex;
   justify-content: flex-end;
   width: 30%;
-  cursor: pointer;
   user-select: none;
 }
 
@@ -85,7 +84,7 @@ body.tutorial-on .helper {
   padding: 0;
   border-width: 0px;
   border-radius: 50%;
-  background-color: var(--base-variant);
+  background-color: var(--base-color);
   overflow: hidden;
   justify-content: center;
   position: relative;
@@ -98,18 +97,19 @@ body.tutorial-on .helper {
   display: flex;
   justify-content: flex-start;
   gap: 10px;
-  padding: 0px 20px;
+  height: min-content;
+  padding: 0;
 }
 
 .droppedlinks svg{
-  height: 19px;
+  height: max(2.5vh, 16px);
   fill: var(--secondary-text);
 }
 
 #themeswitch svg{
   fill: var(--secondary-text);
   position: absolute;
-  right: 25%;
+  right: 0;
   bottom: 25%;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
@@ -166,10 +166,37 @@ body.tutorial-on .helper {
   margin-right: 7%;
 }
 
+.explaination{
+  font-weight: normal;
+  margin-left: 7%;
+  margin-right: 7%;
+}
+
 #home{
   background: url("/src/media/download.png");
+  box-sizing: border-box;
   place-items: center;
   overflow: hidden;
+  z-index: -1;
+  background-size: cover;
+  border-width: 2px;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-style: solid;
+  border-color: var(--border-color);
+  margin-top: 10px;
+  padding-top: 30px;
+  margin-left: min(50px, 3vw);
+  margin-right: min(50px, 3vw);
+  color: white;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+
+#tutorial{
+  background: url("/src/media/tutorial.png");
+  place-items: center;
+  overflow: hidden;
+  text-align: left;
   z-index: -1;
   background-size: cover;
   border-width: 2px;
@@ -252,8 +279,7 @@ body.tutorial-on .helper {
     flex: 1; 
     display: flex;
     padding-top: 25px;
-    cursor: pointer;
-    padding-left: 15px;
+    padding-left: 0;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }
@@ -297,7 +323,6 @@ body.tutorial-on .helper {
     justify-content: center;
     position: relative;
     align-items: center;
-    cursor: pointer;
   }
 
   .tutorial-box{
@@ -376,6 +401,15 @@ body.tutorial-on .helper {
   }
    
   #home{
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh + 100px);
+    flex-grow: 1;
+    padding-bottom: 30px;
+  }
+
+  #tutorial{
     overflow: show;
     display: flex;
     flex-direction: column;
@@ -395,7 +429,24 @@ body.tutorial-on .helper {
   }
 
   #titles{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.7;
     flex-grow: 1;
+  }
+
+  .buttonwrapper{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-left: 7%;
+    margin-right: 7%;
   }
    
   #game{
@@ -469,6 +520,10 @@ body.tutorial-on .helper {
     filter: blur(10px);
   }
 
+  #tutorial.show{
+    filter: blur(10px);
+  }
+
   #game.show{
     filter: blur(10px);
   }
@@ -478,7 +533,6 @@ body.tutorial-on .helper {
   }
 
   #indexbuttons button{
-    flex: 1;
     height: auto;
     width: auto;
     padding: 14px;
@@ -489,6 +543,7 @@ body.tutorial-on .helper {
     flex-direction: column;
     gap: 25px;
     width: 100%;
+    font-size: max(2.5vh, 16px);
   }
 
   .formgame{
@@ -511,11 +566,20 @@ body.tutorial-on .helper {
   .paragraph{
     font-size: max(2.5vw, 15px);
   }
+
+  .explaination{
+    font-size: max(2.5vh, 16px);
+  }
 }
 
 @media only screen and (min-width: 923px) {
 
   #home{
+    height: calc(100vh - 103.59px) !important;
+    padding-bottom: 30px;
+  }
+
+  #tutorial{
     height: calc(100vh - min(194px, 10vh));
   }
 
@@ -526,10 +590,6 @@ body.tutorial-on .helper {
 
   .tutorial-box{
     text-align: center;
-  }
-
-  #indexbuttons button{
-    flex: 1;
   }
 
   #button-holder{
@@ -549,6 +609,11 @@ body.tutorial-on .helper {
     flex-direction: column;
   }
 
+  #tutorial{
+    display: flex;
+    flex-direction: column;
+  }
+
   #finish{
     display: flex;
     flex-direction: column;
@@ -563,6 +628,11 @@ body.tutorial-on .helper {
   }
 
   #titles{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-grow: 0.7;
   }
    
@@ -570,18 +640,27 @@ body.tutorial-on .helper {
     display: flex;
     justify-content: space-between;
     z-index: 99;
-    height: clamp(50px, 10vh, 100px);
+    height: 73.594px;
     align-items: center;
     padding: 15px 10%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     position: relative;
     z-index: 10;
     flex-wrap: wrap;
   } 
 
+  .buttonwrapper{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
   .logimage{
-    width: clamp(150px, 32vh, 300px);
-    height: auto;
+    height: 70px;
     cursor: pointer;
   }
 
@@ -610,6 +689,10 @@ body.tutorial-on .helper {
   }
 
   .paragraph{
+    font-size: max(2.5vh, 16px);
+  }
+
+  .explaination{
     font-size: max(2.5vh, 16px);
   }
 }
@@ -777,6 +860,44 @@ code{
   height: 55px;
   padding-left: 15px;
   background: linear-gradient(270deg,rgba(1, 117, 204, 1) 0%, rgba(27, 161, 246, 1) 50%, rgba(13, 163, 248, 1) 100%);
+  width: auto;
+  padding-right: 10px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.buttonimportant{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px; 
+  text-align: left;
+  transition: transform 0.2s, opacity 0.5s ease-in-out;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  height: 55px;
+  padding-left: 15px;
+  background: linear-gradient(270deg,rgb(204, 48, 1) 0%, rgb(246, 89, 27) 50%, rgb(248, 40, 13) 100%);
+  width: auto;
+  padding-right: 10px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.buttonyellow{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px; 
+  text-align: left;
+  transition: transform 0.2s, opacity 0.5s ease-in-out;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  height: 55px;
+  padding-left: 15px;
+  background: linear-gradient(270deg,rgb(204, 157, 1) 0%, rgb(246, 231, 27) 50%, rgb(248, 244, 13) 100%);
   width: auto;
   padding-right: 10px;
   border: 0px;
@@ -988,7 +1109,11 @@ body.fade-out {
 }
 
 .icon{
-  height: round(70%);
+  height: 70%;
+}
+
+.choose{
+  height: 90%;
 }
 
 #leaderboard{
