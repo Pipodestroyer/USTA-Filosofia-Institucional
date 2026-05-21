@@ -10,6 +10,7 @@ const finishform = document.getElementById('send-prompt');
 const nombrefinal = document.getElementById('default-input');
 const enviarnombre = document.getElementById('sendname');
 const wins = document.getElementById('nivelmax');
+let gamesize = shadowoverlay.offsetHeight;
 
 
 const tutorialSteps = [
@@ -225,6 +226,7 @@ function Despliegue(){
             tosizeup.style.height = `calc(100vh - min(224px, 20vh) + ${newsizing-65}px)`;
         }
         if(isMobile){
+            document.getElementById('game').style.height = `${gamesize}px`;
             tosizeup.style.height = 'auto';
         }
     } else if(localStorage.getItem('desplegado')) {
@@ -233,6 +235,7 @@ function Despliegue(){
             tosizeup.style.height = `calc(100vh - min(224px, 20vh)`;
         }
         if(isMobile){
+            document.getElementById('game').style.height = `${gamesize}px`;
             tosizeup.style.height = 'auto';
         }
         boxtosize.style.flexWrap = 'never';
@@ -287,8 +290,6 @@ editor.addEventListener('keydown', function(e) {
 });
 
 definput.addEventListener('input', manage);
-
-let gamesize = shadowoverlay.offsetHeight;
 
 document.addEventListener('DOMContentLoaded', (event) => {
     if(localStorage.getItem('desplegado')){
