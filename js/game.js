@@ -2,12 +2,14 @@ const botones = document.getElementById('send');
 const definput = document.getElementById('codigo');
 const helper =  document.getElementById('despliegue');
 const boxtosize = document.getElementById('helper-box');
+const shadowoverlay = document.getElementById('shadow-overlay');
 const docs = document.getElementById('buttons-helper');
 const tipping = document.getElementById('buttons-helper-tip');
 const tosizeup = document.getElementById('game');
 const finishform = document.getElementById('send-prompt');
 const nombrefinal = document.getElementById('default-input');
 const enviarnombre = document.getElementById('sendname');
+const wins = document.getElementById('nivelmax');
 
 
 const tutorialSteps = [
@@ -295,6 +297,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     tipping.style.display = 'none';
     botones.disabled = true;
     enviarnombre.disabled = true;
+    wins.innerHTML = `0/${niveles.length}`;
+});
+
+window.addEventListener('resize', (event) => {
+    let gamesize = shadowoverlay.offsetHeight;
+    document.getElementById('game').style.height = `${gamesize}px`;
 });
 
 let startTime;
@@ -461,7 +469,6 @@ function cargarNivel() {
 async function verificarCodigo() {
     const codigoUsuario = document.getElementById('codigo').value;
     const consola = document.getElementById('consola');
-    const wins = document.getElementById('nivelmax');
 
     consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span><br>";
 
