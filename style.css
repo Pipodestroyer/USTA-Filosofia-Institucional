@@ -54,16 +54,16 @@ body.tutorial-on .formgame {
     -webkit-backdrop-filter: none !important;
 }
 
-body.tutorial-on #game {
+body.tutorial-on #game .container-overlay-game {
     overflow: visible !important;
 }
 
-body.tutorial-on #gameinner {
+body.tutorial-on .container-overlay-game #gameinner {
     overflow: visible !important;
 }
 
-body.tutorial-on .formgame,
-body.tutorial-on .helper {
+body.tutorial-on .container-overlay-game #gameupper .formgame,
+body.tutorial-on .container-overlay-game #gameinner .helper {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
 }
@@ -73,6 +73,43 @@ body.tutorial-on .helper {
 }
 
 .container-overlay{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 30px 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.274));
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-overlay-finish{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 30px 10px;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.274));
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.container-overlay-finish div{
+  flex: 1;
+}
+
+.container-overlay-tutorial{
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   padding: 30px 10px;
@@ -260,19 +297,19 @@ body.tutorial-on .helper {
 
 #tutorial{
   background: url("/src/media/tutorial.png");
-  place-items: center;
   overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
   text-align: left;
   z-index: -1;
   background-size: cover;
   border-width: 2px;
-  justify-content: flex-start;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border-style: solid;
+  border-bottom: 0 !important;
   border-color: var(--border-color);
   margin-top: 30px;
-  padding-top: 30px;
   margin-left: min(50px, 3vw);
   margin-right: min(50px, 3vw);
   color: white;
@@ -280,11 +317,23 @@ body.tutorial-on .helper {
 }
 
 
+#titular{
+  text-align: left;
+}
+
+#status{
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: end;
+}
+
 
 #finish{
   background: url("/src/media/Game.png");
-  place-items: center;
   overflow: hidden;
+  position: relative;
+  border-bottom: 0 !important;
   z-index: -1;
   background-size: cover;
   border-width: 2px;
@@ -293,7 +342,6 @@ body.tutorial-on .helper {
   border-style: solid;
   border-color: var(--border-color);
   margin-top: 30px;
-  padding-top: 30px;
   margin-left: min(50px, 3vw);
   margin-right: min(50px, 3vw);
   color: white;
@@ -327,10 +375,6 @@ body.tutorial-on .helper {
     padding-left: 0;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-  }
-
-  #finish{
-    flex-direction: column;
   }
 
   #menu{
@@ -462,18 +506,18 @@ body.tutorial-on .helper {
   }
 
   #tutorial{
-    overflow: show;
     display: flex;
-    flex-direction: column;
+    overflow: show;
     height: calc(100dvh + 100px);
-    flex-grow: 1;
   }
 
-  #finish{
+  .container-overlay-finish{
+    flex: 1;
+    position: static;
     overflow: show;
     display: flex;
     flex-direction: column;
-    height: calc(100dvh + 100px);
+    height: inherit;
   }
 
   #titular{
@@ -490,11 +534,11 @@ body.tutorial-on .helper {
   }
 
   #tutorial-titles{
+    padding-top: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 0.7;
+    justify-content: start;
+    align-items: left;
     flex-grow: 1;
     text-align: left;
   }
@@ -573,6 +617,10 @@ body.tutorial-on .helper {
   .mobile-dropdown.show ~ #overlay{
     display: block;
   }
+  .container-overlay-tutorial{
+    position: static;
+    justify-content: left;
+  }
 
   #home.show{
     filter: blur(10px);
@@ -639,7 +687,7 @@ body.tutorial-on .helper {
   }
 
   #tutorial{
-    height: calc(100vh - min(194px, 10vh));
+    height: calc(100vh - 104px);
   }
 
   .navlinks li{
@@ -656,7 +704,7 @@ body.tutorial-on .helper {
   }
 
   #finish{
-    height: calc(100vh - min(194px, 10vh));
+    height: calc(100vh - 134px);
   }
 
   #game{
@@ -669,11 +717,6 @@ body.tutorial-on .helper {
   }
 
   #tutorial{
-    display: flex;
-    flex-direction: column;
-  }
-
-  #finish{
     display: flex;
     flex-direction: column;
   }
@@ -833,10 +876,10 @@ a{
   display: flex;
   gap: 8px;
   flex-direction: column;
-  height: auto;
+  height: 100%;
+  text-align: left;
   width: 80%;
   margin-top: 0;
-  margin-bottom: 30px;
   margin-left: 0;
   margin-right: 0;
   border-radius: 25px;
@@ -1292,7 +1335,6 @@ body.fade-out {
     z-index: 1000 !important;
     outline: 4px solid #3b82f6 !important; 
     outline-offset: 4px !important;
-    border-radius: 10px !important; 
     box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important; 
     background-color: var(--form) !important; 
 }
