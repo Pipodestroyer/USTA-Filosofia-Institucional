@@ -86,41 +86,43 @@
 
 
         <div class="container" id="game">
-            <div class="container" id="gameinner">
-                <h1 class="title" id="tit">La Primera Vía: El Primer Motor</h1>
-                <p class="paragraph" id="subtit">"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."</p>
-                <p class="paragraph" id="acc">Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.</p>
-                <div class="helper" id="helper-box">
-                    <div class="main-helper">
-                        <div class="counter" id="counter-box"><span id="stopwatch">0:00.000</span><code id="nivelmax">0/2</code></div>
-                        <button class="buttonhelp" id="despliegue" type="button" onclick="Despliegue()"><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M360-160H200q-33 0-56.5-23.5T120-240v-560q0-33 23.5-56.5T200-880h560q33 0 56.5 23.5T840-800v560q0 33-23.5 56.5T760-160H600l-92 92q-12 12-28 12t-28-12l-92-92Zm116-120q21 0 35.5-14.5T526-330q0-21-14.5-35.5T476-380q-21 0-35.5 14.5T426-330q0 21 14.5 35.5T476-280Zm70-360q0 17-11 36.5T498-561q-17 15-27.5 28.5T453-505q-4 8-6 16t-4 18q-2 15 8 26t26 11q14 0 25-10t15-27q3-14 11.5-26t27.5-31q35-35 49.5-59t14.5-53q0-54-36.5-87T484-760q-45 0-78 19t-53 53q-7 12-.5 25t20.5 18q13 5 26 0t21-16q11-14 27-22.5t37-8.5q26 0 44 14.5t18 37.5Z"/></svg></button>
+            <div class="container-overlay-game" id="shadow-overlay">
+                <div class="container" id="gameinner">
+                    <h1 class="title" id="tit" style="margin-bottom: 0;">Cargando...</h1>
+                    <p class="paragraph" id="subtit" style="margin-top: 0;">Cargando...</p>
+                    <p class="paragraph" id="acc" style="margin-top: 100px;">Esto no tardara mucho...</p>
+                    <div class="helper" id="helper-box">
+                        <div class="main-helper">
+                            <div class="counter" id="counter-box"><span id="stopwatch">0:00.000</span><code id="nivelmax">0/2</code></div>
+                            <button class="buttonhelp" id="despliegue" type="button" onclick="Despliegue()"><svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M360-160H200q-33 0-56.5-23.5T120-240v-560q0-33 23.5-56.5T200-880h560q33 0 56.5 23.5T840-800v560q0 33-23.5 56.5T760-160H600l-92 92q-12 12-28 12t-28-12l-92-92Zm116-120q21 0 35.5-14.5T526-330q0-21-14.5-35.5T476-380q-21 0-35.5 14.5T426-330q0 21 14.5 35.5T476-280Zm70-360q0 17-11 36.5T498-561q-17 15-27.5 28.5T453-505q-4 8-6 16t-4 18q-2 15 8 26t26 11q14 0 25-10t15-27q3-14 11.5-26t27.5-31q35-35 49.5-59t14.5-53q0-54-36.5-87T484-760q-45 0-78 19t-53 53q-7 12-.5 25t20.5 18q13 5 26 0t21-16q11-14 27-22.5t37-8.5q26 0 44 14.5t18 37.5Z"/></svg></button>
+                        </div>
+                        <div class="main-helper" id="buttons-helper-tip">
+                            <div class="counter" id="counter-box"><span id="tip-modifier">> Placeholder</span></div>
+                        </div>
+                        <div class="main-helper" id="buttons-helper" style="flex: 1; flex-wrap:wrap;">
+                            <button class="buttonnext" id="documentation" onclick="pythondocs()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Python docs</button>
+                            <button class="buttoncontinue" id="tip" onclick="clued()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Pista</button>
+                            <button class="buttonfinish" id="tip" onclick="startTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Tutorial</button>
+                        </div>         
                     </div>
-                    <div class="main-helper" id="buttons-helper-tip">
-                        <div class="counter" id="counter-box"><span id="tip-modifier">> Placeholder</span></div>
-                    </div>
-                    <div class="main-helper" id="buttons-helper" style="flex: 1; flex-wrap:wrap;">
-                        <button class="buttonnext" id="documentation" onclick="pythondocs()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Python docs</button>
-                        <button class="buttoncontinue" id="tip" onclick="clued()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Pista</button>
-                        <button class="buttonfinish" id="tip" onclick="startTutorial()" style="height: 45px; padding-left: 10px; flex:1; display:block; text-align:center;">Tutorial</button>
-                    </div>         
                 </div>
-            </div>
-            <div class="uppergame" id="gameupper">
-                <div class="formgame">
-                    <textarea id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off"></textarea>
-                    <button class="buttonnext" id="send" type="button" onclick="verificarCodigo()">
-                    <span class="button-text">Verificar</span>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
-                    </button> 
-                    <button class="buttoncontinue" id="nextlvl" type="button" onclick="siguienteNivel()" style="display: none;">
-                    <span class="button-text">Siguiente Nivel</span>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
-                    </button> 
-                    <button class="buttonfinish" id="buttonfinish" type="button" style="display: none;" onclick="enviar()">
-                    <span class="button-text">Finalizar</span>
-                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M455-64q-12-4-23-12L192-256q-15-11-23.5-28t-8.5-36v-480q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v480q0 19-8.5 36T768-256L528-76q-11 8-23 12t-25 4q-13 0-25-4Zm-17-410-56-56q-12-12-28-11.5T326-530q-12 12-12.5 28.5T325-473l85 85q12 12 28 12t28-12l170-170q12-12 11.5-28T636-614q-12-12-28.5-12.5T579-615L438-474Z"/></svg>
-                    </button> 
-                    <div class="console" id="consola"><span class="system-msg">> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
+                <div class="uppergame" id="gameupper">
+                    <div class="formgame">
+                        <textarea id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off"></textarea>
+                        <button class="buttonnext" id="send" type="button" onclick="verificarCodigo()">
+                        <span class="button-text">Verificar</span>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                        </button> 
+                        <button class="buttoncontinue" id="nextlvl" type="button" onclick="siguienteNivel()" style="display: none;">
+                        <span class="button-text">Siguiente Nivel</span>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
+                        </button> 
+                        <button class="buttonfinish" id="buttonfinish" type="button" style="display: none;" onclick="enviar()">
+                        <span class="button-text">Finalizar</span>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M455-64q-12-4-23-12L192-256q-15-11-23.5-28t-8.5-36v-480q0-33 23.5-56.5T240-880h480q33 0 56.5 23.5T800-800v480q0 19-8.5 36T768-256L528-76q-11 8-23 12t-25 4q-13 0-25-4Zm-17-410-56-56q-12-12-28-11.5T326-530q-12 12-12.5 28.5T325-473l85 85q12 12 28 12t28-12l170-170q12-12 11.5-28T636-614q-12-12-28.5-12.5T579-615L438-474Z"/></svg>
+                        </button> 
+                        <div class="console" id="consola"><span class="system-msg">> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
+                    </div>
                 </div>
             </div>
         </div>

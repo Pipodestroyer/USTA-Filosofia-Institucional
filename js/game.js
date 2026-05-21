@@ -2,12 +2,15 @@ const botones = document.getElementById('send');
 const definput = document.getElementById('codigo');
 const helper =  document.getElementById('despliegue');
 const boxtosize = document.getElementById('helper-box');
+const shadowoverlay = document.getElementById('shadow-overlay');
 const docs = document.getElementById('buttons-helper');
 const tipping = document.getElementById('buttons-helper-tip');
 const tosizeup = document.getElementById('game');
 const finishform = document.getElementById('send-prompt');
 const nombrefinal = document.getElementById('default-input');
 const enviarnombre = document.getElementById('sendname');
+const wins = document.getElementById('nivelmax');
+let gamesize = shadowoverlay.offsetHeight;
 
 
 const tutorialSteps = [
@@ -127,7 +130,6 @@ function showStep(index) {
                 tooltip.style.top = 'auto'; 
             }
             
-            // Hacemos scroll
             const yOffset = -120; 
             const y = targetEl.getBoundingClientRect().top + window.scrollY + yOffset;
             window.scrollTo({top: y, behavior: 'smooth'});
@@ -219,18 +221,10 @@ function Despliegue(){
         boxtosize.style.flexWrap = 'warp';
         docs.style.display = 'flex';
         tipping.style.display = 'flex';
-        if(!isMobile && isTiny){
-            const newsizing = boxtosize.offsetHeight;
-            tosizeup.style.height = `calc(100vh - min(224px, 20vh) + ${newsizing-65}px)`;
-        }
         if(isMobile){
             tosizeup.style.height = 'auto';
         }
     } else if(localStorage.getItem('desplegado')) {
-        if(!isMobile){
-            const newsizing = boxtosize.offsetHeight;
-            tosizeup.style.height = `calc(100vh - min(224px, 20vh)`;
-        }
         if(isMobile){
             tosizeup.style.height = 'auto';
         }
@@ -296,6 +290,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     tipping.style.display = 'none';
     botones.disabled = true;
     enviarnombre.disabled = true;
+    wins.innerHTML = `0/${niveles.length}`;
 });
 
 let startTime;
@@ -370,6 +365,59 @@ def _test_lvl1():
         return False
 _test_lvl1()
 `
+    },           
+    {
+        titulo: "De Potencia a Acto",
+        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
+        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
+        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+        docs: "https://www.w3schools.com/python/python_classes.asp",
+        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
+        testPython: `
+def _test_lvl2():
+    try:
+        obj = Ente()
+        obj.actualizar()
+        return True
+    except:
+        return False
+_test_lvl2()
+`
+    },
+    {
+        titulo: "De Potencia a Acto",
+        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
+        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
+        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
+        docs: "https://www.w3schools.com/python/python_classes.asp",
+        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
+        testPython: `
+def _test_lvl2():
+    try:
+        obj = Ente()
+        obj.actualizar()
+        return True
+    except:
+        return False
+_test_lvl2()
+`
+    },
+    {
+        titulo: "La Primera Vía: El Primer Motor",
+        filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',
+        enunciado: 'Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.',
+        codigoInicial: "def encontrar_motor():\n    # Escribe tu código aquí\n    pass",
+        docs:"https://www.w3schools.com/python/python_functions.asp",
+        clue: ["Piensa en algo que siempre ha estado ahí, sin necesidad de ser movido por otro.", "¿Qué podría ser el origen de todo movimiento sin ser movido por algo más?", "return ..."],
+        testPython: `
+def _test_lvl1():
+    try:
+        print(encontrar_motor())
+        return encontrar_motor() == "Primer Motor"
+    except:
+        return False
+_test_lvl1()
+`
     },
     {
         titulo: "De Potencia a Acto",
@@ -408,7 +456,6 @@ function cargarNivel() {
 async function verificarCodigo() {
     const codigoUsuario = document.getElementById('codigo').value;
     const consola = document.getElementById('consola');
-    const wins = document.getElementById('nivelmax');
 
     consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span><br>";
 
