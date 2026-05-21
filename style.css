@@ -70,6 +70,26 @@ body.tutorial-on .helper {
   fill: var(--secondary-text);
 }
 
+.container-overlay{
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 30px 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.274));
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
 #headerswitch{
   flex: 1; 
   display: flex;
@@ -175,6 +195,7 @@ body.tutorial-on .helper {
 #home{
   background: url("/src/media/download.png");
   box-sizing: border-box;
+  position: relative;
   place-items: center;
   overflow: hidden;
   z-index: -1;
@@ -185,9 +206,9 @@ body.tutorial-on .helper {
   border-style: solid;
   border-color: var(--border-color);
   margin-top: 10px;
-  padding-top: 30px;
   margin-left: min(50px, 3vw);
   margin-right: min(50px, 3vw);
+  margin-bottom: 0;
   color: white;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
 }
@@ -586,8 +607,9 @@ body.tutorial-on .helper {
 @media only screen and (min-width: 923px) {
 
   #home{
-    height: calc(100vh - 103.59px) !important;
+    height: calc(100vh - 104px) !important;
     padding-bottom: 30px;
+    border-bottom: 0;
   }
 
   #tutorial{
@@ -661,7 +683,7 @@ body.tutorial-on .helper {
     display: flex;
     justify-content: space-between;
     z-index: 99;
-    height: 73.594px;
+    height: 74px;
     align-items: center;
     padding: 15px 10%;
     position: relative;
