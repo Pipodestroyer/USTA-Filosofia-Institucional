@@ -119,7 +119,7 @@ body.tutorial-on .helper {
   left: 0;
   right: 0;
   bottom: 0;
-  position: absolute;
+  position: static;
   height: inherit;
   width: inherit;
   background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.274));
@@ -429,9 +429,15 @@ body.tutorial-on .helper {
     display: none;
   }
 
-  .container-overlay-game{
+  #game{
+    position: relative !important;
+    display: flex;
     flex-direction: column;
-    height: fit-content;
+  }
+
+  .container-overlay-game{
+    position: static;
+    flex-direction: column;
   }
 
   .logimage{

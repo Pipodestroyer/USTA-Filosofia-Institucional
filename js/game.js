@@ -226,7 +226,6 @@ function Despliegue(){
             tosizeup.style.height = `calc(100vh - min(224px, 20vh) + ${newsizing-65}px)`;
         }
         if(isMobile){
-            document.getElementById('game').style.height = `${gamesize}px`;
             tosizeup.style.height = 'auto';
         }
     } else if(localStorage.getItem('desplegado')) {
@@ -235,7 +234,6 @@ function Despliegue(){
             tosizeup.style.height = `calc(100vh - min(224px, 20vh)`;
         }
         if(isMobile){
-            document.getElementById('game').style.height = `${gamesize}px`;
             tosizeup.style.height = 'auto';
         }
         boxtosize.style.flexWrap = 'never';
@@ -301,12 +299,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     botones.disabled = true;
     enviarnombre.disabled = true;
     wins.innerHTML = `0/${niveles.length}`;
-    document.getElementById('game').style.height = `${gamesize}px`;
-});
-
-window.addEventListener('resize', (event) => {
-    let gamesize = shadowoverlay.offsetHeight;
-    document.getElementById('game').style.height = `${gamesize}px`;
 });
 
 let startTime;
