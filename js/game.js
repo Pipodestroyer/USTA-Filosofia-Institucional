@@ -288,6 +288,8 @@ editor.addEventListener('keydown', function(e) {
 
 definput.addEventListener('input', manage);
 
+let gamesize = shadowoverlay.offsetHeight;
+
 document.addEventListener('DOMContentLoaded', (event) => {
     if(localStorage.getItem('desplegado')){
         Despliegue();
@@ -298,6 +300,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     botones.disabled = true;
     enviarnombre.disabled = true;
     wins.innerHTML = `0/${niveles.length}`;
+    document.getElementById('game').style.height = `${gamesize}px`;
 });
 
 window.addEventListener('resize', (event) => {
