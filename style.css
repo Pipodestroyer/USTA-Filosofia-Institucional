@@ -118,6 +118,8 @@ body.tutorial-on .container-overlay-game #gameinner {
   top: 0;
   left: 0;
   right: 0;
+  position: static !important;
+  height: fit-content;
   bottom: 0;
   position: absolute;
   background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.274));
@@ -299,13 +301,14 @@ body.tutorial-on .container-overlay-game #gameinner {
 
 #tutorial{
   background: url("/src/media/tutorial.png");
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   box-sizing: border-box;
   text-align: left;
   z-index: -1;
   background-size: cover;
   border-width: 2px;
+  display: flex;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border-style: solid;
@@ -509,8 +512,6 @@ body.tutorial-on .container-overlay-game #gameinner {
 
   #tutorial{
     display: flex;
-    overflow: show;
-    height: calc(100dvh + 100px);
   }
 
   .container-overlay-finish{
@@ -684,10 +685,6 @@ body.tutorial-on .container-overlay-game #gameinner {
     height: calc(100vh - 104px) !important;
     padding-bottom: 30px;
     border-bottom: 0;
-  }
-
-  #tutorial{
-    height: calc(100vh - 104px);
   }
 
   .navlinks li{
