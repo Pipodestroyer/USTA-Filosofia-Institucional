@@ -32,7 +32,6 @@ async function probarDemo(tipo) {
     const consola = document.getElementById(consolaDestino);
     
     // Preparar consola visualmente
-    consola.style.display = "block";
     consola.innerHTML = "<span class='system-msg'>> Ejecutando...</span><br>";
 
     let codigoAEjecutar = "";
