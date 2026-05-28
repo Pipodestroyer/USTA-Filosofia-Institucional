@@ -687,8 +687,6 @@ body.tutorial-on .container-overlay-game #gameinner {
     border-bottom: 0;
   }
 
-<<<<<<< Updated upstream
-=======
   #tutorial{
     height: fit-content;
   }
@@ -698,7 +696,6 @@ body.tutorial-on .container-overlay-game #gameinner {
     justify-content: left;
   }
 
->>>>>>> Stashed changes
   .navlinks li{
   display: inline-block;
   padding: 0px 20px;
