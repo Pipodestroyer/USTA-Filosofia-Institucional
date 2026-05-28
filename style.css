@@ -182,6 +182,7 @@ body.tutorial-on .container-overlay-game #gameinner {
   justify-content: flex-end;
   width: 30%;
   user-select: none;
+  transition: background-color 0.3s ease;
 }
 
 #themeswitch{
@@ -190,7 +191,7 @@ body.tutorial-on .container-overlay-game #gameinner {
   padding: 0;
   border-width: 0px;
   border-radius: 50%;
-  background-color: var(--base-color);
+  background-color: transparent;
   overflow: hidden;
   justify-content: center;
   position: relative;
@@ -380,6 +381,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     padding-left: 0;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
+    transition: background-color 0.3s ease;
   }
 
   #menu{
@@ -388,7 +390,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     padding: 0;
     border-width: 0px;
     border-radius: 50%;
-    background-color: var(--base-color);
+    background-color: transparent;
     overflow: hidden;
     justify-content: center;
     position: relative;
@@ -417,6 +419,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     justify-content: center;
     position: relative;
     align-items: center;
+    transition: background-color 0.3s ease;
   }
 
   .tutorial-box{
@@ -580,6 +583,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     flex-wrap: wrap;
     height: auto;
     background-color: var(--base-color);
+    transition: background-color 0.3s ease;
   } 
 
   #overlay{
