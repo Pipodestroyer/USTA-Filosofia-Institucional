@@ -608,7 +608,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     flex-wrap: wrap;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, background-color 0.3s ease, background-image 0.3s ease, background 0.3s ease;
   } 
 
   .mobile-dropdown.show{
@@ -658,6 +658,10 @@ body.tutorial-on .container-overlay-game #gameinner {
     margin-bottom: 30px;
   }
 
+  .mobile-test-height{
+    height: auto !important;
+  }
+
   .console{
    height: 30vh;
   }
@@ -671,11 +675,11 @@ body.tutorial-on .container-overlay-game #gameinner {
   }
 
   .paragraph{
-    font-size: max(2.5vw, 15px);
+    font-size: max(2.5vh, 20px);
   }
 
   .explaination{
-    font-size: max(2.5vh, 16px);
+    font-size: max(2vh, 13px);
   }
 }
 
@@ -1078,7 +1082,7 @@ code{
 
 
 .buttoncontinue:enabled:hover{
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .buttoncontinue:enabled:active{
@@ -1096,7 +1100,7 @@ code{
 
 
 .buttonfinish:enabled:hover{
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .buttonfinish:enabled:active{
@@ -1118,6 +1122,22 @@ code{
 }
 
 .buttonnext:enabled:active{
+  transform: scale(0.98); 
+}
+
+.buttonimportant:enabled:hover{
+  transform: scale(1.02);
+}
+
+.buttonimportant:enabled:active{
+  transform: scale(0.98); 
+}
+
+.buttonhelp:enabled:hover{
+  transform: scale(1.02);
+}
+
+.buttonhelp:enabled:active{
   transform: scale(0.98); 
 }
 
@@ -1151,7 +1171,7 @@ body.fade-out {
   border-radius: 10px; 
   font-weight: bold;
   color: white;
-  background-color: #14141738;
+  background-color: #0a090938;
   height: 60%;
   padding-left: 15px;
   border: 0px;
@@ -1170,7 +1190,7 @@ body.fade-out {
   border-radius: 10px; 
   font-weight: bold;
   color: rgba(255, 255, 255, 0.301);
-  background-color: #14141738;
+  background-color: #0a090938;
   padding-left: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -1348,59 +1368,3 @@ body.fade-out {
     background-color: var(--form) !important; 
 }
 
-.mini-editor {
-    background-color: #191a21; /* Fondo oscuro tipo terminal */
-    padding: 15px;
-    border-radius: 5px;
-    margin: 10px 0 20px 0;
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.mini-editor code {
-    color: #f8f8f2;
-    font-size: 16px;
-}
-
-.code-input {
-    background-color: #282a36; /* Un fondo sutilmente distinto */
-    color: #50fa7b; /* Texto verde para que destaque */
-    border: 1px solid #6272a4;
-    border-radius: 3px;
-    padding: 2px 5px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 16px;
-    outline: none;
-    width: 200px;
-}
-
-.code-input:focus {
-    border-color: #bd93f9; /* Brilla al hacer clic */
-}
-
-.btn-demo {
-    background-color: #bd93f9;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: auto; /* Empuja el botón a la derecha */
-}
-
-.mini-console {
-    background-color: #000;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-    margin-bottom: 20px;
-    min-height: 20px;
-    white-space: pre-wrap;
-    display: none; /* Se oculta hasta que haya código ejecutado */
-    border-left: 3px solid #50fa7b; /* Un detalle visual para indicar éxito/ejecución */
-}

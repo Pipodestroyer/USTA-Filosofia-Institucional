@@ -5,7 +5,7 @@
         <link rel="icon" type="image/x-icon" href="src/media/favicon.gif">
         <link rel="stylesheet" href="style.css">
         <script src="/js/intro.js" defer></script>
-        <script src="/js/game.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
         <script type="text/javascript" src="/js/darkmode.js" defer></script>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
@@ -61,53 +61,99 @@
                     <h1 class="title" style="margin-bottom: 0; margin-top:60px;">Introducción a Python</h1>
                     <p class="paragraph" style="margin-top: 0;">"El asombro es el deseo de conocimiento."</p>
                     <div class="tutorial-container">
-                        <p class="explaination">Aquí se te darán los recursos necesarios para completar el juego, desde simples metodologías hasta la creación de funciones, todo en el lenguaje de programación Python.</p>
+                    <p class="explaination">Aquí se te darán los recursos necesarios para completar el juego, desde simples metodologías hasta la creación de funciones, todo en el lenguaje de programación Python.</p>
+                    
+                    <p class="paragraph" style="margin-bottom: 0; margin-top: 60px;">1. Print (Imprimir en pantalla)</p>
+                    <p class="explaination" style="margin-top: 0;">La función <code>print()</code> es como el mensajero de Python. Se utiliza para mostrar información en la consola. Todo lo que pongas dentro de sus paréntesis será visible. Si quieres mostrar texto, debes rodearlo con comillas.</p>
+                    
+                    <div class="formgame mobile-test-height" style="gap: 15px;">
+                        <div style="background-color: #0a090938; padding: 15px; border-radius: 10px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                            <code style="font-size: 20px; background: transparent; padding: 0; color: white;">print(</code>
+                            <input type="text" id="input-print" value='"¡Hola, Santo Tomás!"' class="disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 250px;">
+                            <code style="font-size: 20px; background: transparent; padding: 0; color: white;">)</code>
+                        </div>
                         
-                        <p class="paragraph" style="margin-bottom: 0;">1. Print (Imprimir en pantalla)</p>
-                        <p class="explaination" style="margin-top: 0;">La función <code>print()</code> es como el mensajero de Python. Se utiliza para mostrar información en la consola. Todo lo que pongas dentro de sus paréntesis será visible. Si quieres mostrar texto, debes rodearlo con comillas.</p>
-                        
-                        <div class="formgame">
-                            <textarea placeholder="print('...')" id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off" style="height: 50px;"></textarea>
-                            <button class="buttonnext" id="send" type="button" onclick="probarDemo('print')">
+                        <button class="buttonnext" type="button" onclick="probarDemo('print')" style="height: 45px;">
                             <span class="button-text">Probar</span>
                             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
-                            </button> 
-                            <div class="console" id="consola"><span class="system-msg" style="height: 50px;"> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
-                        </div>
-
-                        <p class="paragraph" style="margin-bottom: 0;">2. def (Definir Funciones)</p>
-                        <p class="explaination" style="margin-top: 0;">La palabra reservada <code>def</code> sirve para crear una <strong>función</strong>. Imagina que es una receta de cocina: escribes los pasos una sola vez, le pones un nombre, y luego puedes "prepararla" (llamarla) tantas veces como quieras sin volver a escribir todo desde cero.</p>
-                        
-                        <div class="formgame">
-                            <textarea placeholder="def ejemplo():" id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off" style="height: 50px;"></textarea>
-                            <button class="buttonnext" id="send" type="button" onclick="probarDemo('def')">
-                            <span class="button-text">Probar</span>
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
-                            </button> 
-                            <div class="console" id="consola"><span class="system-msg" style="height: 50px;"> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
-                        </div>
-
-                        <p class="paragraph" style="margin-bottom: 0;">3. Class (Clases y Moldes)</p>
-                        <p class="explaination" style="margin-top: 0;">Una <code>class</code> (clase) es como un <strong>plano de arquitectura o un molde</strong>. En lugar de crear las cosas una por una, creas un molde general que define la "esencia" (características y acciones) que tendrán todos los entes creados a partir de él.</p>
-                        
-                        <div class="formgame">
-                            <textarea placeholder="class ejemplo:" id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off" style="height: 50px;"></textarea>
-                            <button class="buttonnext" id="send" type="button" onclick="probarDemo('class')">
-                            <span class="button-text">Probar</span>
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
-                            </button> 
-                            <div class="console" id="consola"><span class="system-msg" style="height: 50px;"> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
-                        </div>
-                    </div>
-                <div id="forms">
-                    <div class="form" style="flex-direction: row; flex-wrap: wrap;" id="indexbuttons">
-                        <button class="buttoncontinue" id="send" type="button" onclick="location.href='/introduccion'">
-                        <span class="button-text">Continuar</span>
-                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
                         </button> 
+                        <div class="console" id="consola-print" style="display: none; width: 100%; box-sizing: border-box;"></div>
+                    </div>
+
+                    <p class="paragraph" style="margin-bottom: 0;">2. def (Definir Funciones)</p>
+                    <p class="explaination" style="margin-top: 0;">La palabra reservada <code>def</code> sirve para crear una <strong>función</strong>. Escribes los pasos una sola vez, le pones un nombre, y luego puedes llamarla tantas veces como quieras sin volver a escribir el código.</p>
+                    
+                    <div class="formgame mobile-test-height" style="gap: 15px;">
+                        <div style="background-color: #0a090938; padding: 15px; border-radius: 10px; display: flex; flex-direction: column; gap: 8px; text-align: left;">
+                            <code style="font-size: 18px; background: transparent; padding: 0; color: white;">def funcion_demo():<br>&nbsp;&nbsp;&nbsp;&nbsp;return</code>
+                            <input type="text" id="input-def" value='"Resultado de la función"' class="disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 80%;">
+                            <code style="font-size: 18px; background: transparent; padding: 0; color: white;">print(funcion_demo())</code>
+                        </div>
+                        
+                        <button class="buttonnext" type="button" onclick="probarDemo('def')" style="height: 45px;">
+                            <span class="button-text">Probar</span>
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                        </button> 
+                        <div class="console" id="consola-def" style="display: none; width: 100%; box-sizing: border-box;"></div>
+                    </div>
+
+                    <p class="paragraph" style="margin-bottom: 0;">3. Class (Clases y Moldes)</p>
+                    <p class="explaination" style="margin-top: 0;">Una <code>class</code> (clase) es como un <strong>plano de arquitectura o un molde</strong>. Creas un molde general que define la esencia que tendrán todos los entes creados a partir de él.</p>
+                    
+                    <div class="formgame mobile-test-height" style="gap: 15px;">
+                        <div style="background-color: #0a090938; padding: 15px; border-radius: 10px; display: flex; flex-direction: column; gap: 8px; text-align: left;">
+                            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                <code style="font-size: 18px; background: transparent; padding: 0; color: white;">class </code>
+                                <input type="text" id="input-class" value='Materia' class="disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 120px;">
+                                <code style="font-size: 18px; background: transparent; padding: 0; color: white;">:</code>
+                            </div>
+                            <code style="font-size: 18px; background: transparent; padding: 0; color: white;">&nbsp;&nbsp;&nbsp;&nbsp;estado = "En potencia"</code>
+                        </div>
+                    
+                        <button class="buttonnext" type="button" onclick="probarDemo('class')" style="height: 45px;">
+                            <span class="button-text">Probar</span>
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                        </button> 
+                        <div class="console" id="consola-class" style="display: none; width: 100%; box-sizing: border-box;"></div>
+                    </div>
+
+                    <p class="paragraph" style="margin-bottom: 0;">4. Listas e Índices (Colecciones)</p>
+                    <p class="explaination" style="margin-top: 0;">En Python podemos agrupar varios elementos en una <code>lista = ["A", "B", "C"]</code>. Para elegir un elemento específico, usamos corchetes y su posición (índice), recordando que <strong>¡siempre se empieza a contar desde el 0!</strong></p>
+                    
+                    <div class="formgame mobile-test-height" style="gap: 15px;">
+                        <div style="background-color: #0a090938; padding: 15px; border-radius: 10px; display: flex; flex-direction: column; gap: 8px; text-align: left;">
+                            <code style="font-size: 18px; background: transparent; padding: 0; color: white;">pasiones = ["Ira", "Miedo", "Valentía"]</code>
+                            <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+                                <code style="font-size: 18px; background: transparent; padding: 0; color: white;">print( pasiones[</code>
+                                <input type="number" id="input-list" value='2' min="0" max="2" class="disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 60px;">
+                                <code style="font-size: 18px; background: transparent; padding: 0; color: white;">] )</code>
+                            </div>
+                        </div>
+                        
+                        <button class="buttonnext" type="button" onclick="probarDemo('list')" style="height: 45px;">
+                            <span class="button-text">Probar</span>
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                        </button> 
+                        <div class="console" id="consola-list" style="display: none; width: 100%; box-sizing: border-box;"></div>
                     </div>
                 </div>
+                
             </div>
+            <div id="forms" style="width: 100%;">
+                    <div class="buttonwrapper" id="indexbuttons" style="margin-top: 30px;">
+                        <button class="buttoncontinue" id="send" type="button" onclick="location.href='/Juego'" style="gap:60px;">
+                        <span class="button-text">Ir al juego</span>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
+                        </button>   
+                        <button class="buttonfinish" id="send" type="button" onclick="location.href='/'" style="background: rgb(27, 27, 27); gap:30px;">
+                        <span class="button-text">Volver al inicio</span>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m452-568-80-80q-6-6-9-13.5t-3-15.5v-163q0-17 11.5-28.5T400-880h160q17 0 28.5 11.5T600-840v163q0 8-3 15.5t-9 13.5l-80 80q-6 6-13 8.5t-15 2.5q-8 0-15-2.5t-13-8.5Zm116 116q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l80-80q6-6 13.5-9t15.5-3h163q17 0 28.5 11.5T880-560v160q0 17-11.5 28.5T840-360H677q-8 0-15.5-3t-13.5-9l-80-80ZM80-400v-160q0-17 11.5-28.5T120-600h163q8 0 15.5 3t13.5 9l80 80q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13l-80 80q-6 6-13.5 9t-15.5 3H120q-17 0-28.5-11.5T80-400Zm280 280v-163q0-8 3-15.5t9-13.5l80-80q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l80 80q6 6 9 13.5t3 15.5v163q0 17-11.5 28.5T560-80H400q-17 0-28.5-11.5T360-120Zm120-534 40-40v-106h-80v106l40 40ZM160-440h106l40-40-40-40H160v80Zm280 280h80v-106l-40-40-40 40v106Z"/></svg>
+                        </button>
+                        <button class="buttonimportant" id="send" type="button" onclick="location.href='/clasificacion'" style="background: rgb(27, 27, 27); gap:30px; padding-right:15px">
+                        <span class="button-text">Clasificaciones</span>
+                        </button>                 
+                    </div>
+                </div>
         </div>
     </body>
 </html>
