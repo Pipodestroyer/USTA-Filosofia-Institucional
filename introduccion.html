@@ -5,6 +5,7 @@
         <link rel="icon" type="image/x-icon" href="src/media/favicon.gif">
         <link rel="stylesheet" href="style.css">
         <script src="/js/intro.js" defer></script>
+        <script src="/js/game.js" defer></script>
         <script type="text/javascript" src="/js/darkmode.js" defer></script>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
@@ -57,8 +58,9 @@
         <div class="container" id="tutorial">
             <div class="container-overlay-tutorial">
                 <div id="tutorial-titles" style="width: 100%;">
-                    <h1 class="title" style="margin-bottom: 0; margin-top:0;">Introducción a Python</h1>
+                    <h1 class="title" style="margin-bottom: 0; margin-top:60px;">Introducción a Python</h1>
                     <p class="paragraph" style="margin-top: 0;">"El asombro es el deseo de conocimiento."</p>
+<<<<<<< Updated upstream
                     <p class="explaination">Aqui se te daran los recursos necesarios para completar el juego, desde simples metodologias a crear funciones, todo en el lenguaje de programación python.</p>
                     <p class="paragraph" style="margin-bottom: 0;">1. Print</p>
                     <p class="explaination" style="margin-top: 0;">La funcion <code>print(x)</code> se usa para imprimir cualquier instrucción en una consola de python, desde texto hasta variables, siempre que la entrada sea texto.</p>
@@ -76,6 +78,47 @@
                     <p class="paragraph" style="margin-bottom: 0;">2. def</p>
                     <p class="explaination" style="margin-top: 0;">La funcion <code>class any():</code> se usa para imprimir cualquier instrucción en una consola de python, desde texto hasta variables, siempre que la entrada sea texto.</p>
                 </div>
+=======
+                    <div class="tutorial-container">
+                        <p class="explaination">Aquí se te darán los recursos necesarios para completar el juego, desde simples metodologías hasta la creación de funciones, todo en el lenguaje de programación Python.</p>
+                        
+                        <p class="paragraph" style="margin-bottom: 0;">1. Print (Imprimir en pantalla)</p>
+                        <p class="explaination" style="margin-top: 0;">La función <code>print()</code> es como el mensajero de Python. Se utiliza para mostrar información en la consola. Todo lo que pongas dentro de sus paréntesis será visible. Si quieres mostrar texto, debes rodearlo con comillas.</p>
+                        
+                        <div class="formgame">
+                            <textarea placeholder="print('...')" id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off" style="height: 50px;"></textarea>
+                            <button class="buttonnext" id="send" type="button" onclick="probarDemo('print')">
+                            <span class="button-text">Probar</span>
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                            </button> 
+                            <div class="console" id="consola"><span class="system-msg" style="height: 50px;"> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
+                        </div>
+
+                        <p class="paragraph" style="margin-bottom: 0;">2. def (Definir Funciones)</p>
+                        <p class="explaination" style="margin-top: 0;">La palabra reservada <code>def</code> sirve para crear una <strong>función</strong>. Imagina que es una receta de cocina: escribes los pasos una sola vez, le pones un nombre, y luego puedes "prepararla" (llamarla) tantas veces como quieras sin volver a escribir todo desde cero.</p>
+                        
+                        <div class="formgame">
+                            <textarea placeholder="def ejemplo():" id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off" style="height: 50px;"></textarea>
+                            <button class="buttonnext" id="send" type="button" onclick="probarDemo('def')">
+                            <span class="button-text">Probar</span>
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                            </button> 
+                            <div class="console" id="consola"><span class="system-msg" style="height: 50px;"> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
+                        </div>
+
+                        <p class="paragraph" style="margin-bottom: 0;">3. Class (Clases y Moldes)</p>
+                        <p class="explaination" style="margin-top: 0;">Una <code>class</code> (clase) es como un <strong>plano de arquitectura o un molde</strong>. En lugar de crear las cosas una por una, creas un molde general que define la "esencia" (características y acciones) que tendrán todos los entes creados a partir de él.</p>
+                        
+                        <div class="formgame">
+                            <textarea placeholder="class ejemplo:" id="codigo" spellcheck="false" class="disable-focus" autocapitalize="none" autocorrect="off" autocomplete="off" style="height: 50px;"></textarea>
+                            <button class="buttonnext" id="send" type="button" onclick="probarDemo('class')">
+                            <span class="button-text">Probar</span>
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg>
+                            </button> 
+                            <div class="console" id="consola"><span class="system-msg" style="height: 50px;"> Iniciando Pyodide. Esto puede tardar unos segundos la primera vez...</span></div>
+                        </div>
+                    </div>
+>>>>>>> Stashed changes
                 <div id="forms">
                     <div class="form" style="flex-direction: row; flex-wrap: wrap;" id="indexbuttons">
                         <button class="buttoncontinue" id="send" type="button" onclick="location.href='/introduccion'">

@@ -658,7 +658,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     margin-bottom: 30px;
   }
 
-  #consola{
+  .console{
    height: 30vh;
   }
 
@@ -687,6 +687,18 @@ body.tutorial-on .container-overlay-game #gameinner {
     border-bottom: 0;
   }
 
+<<<<<<< Updated upstream
+=======
+  #tutorial{
+    height: fit-content;
+  }
+
+  .container-overlay-tutorial{
+    position: static;
+    justify-content: left;
+  }
+
+>>>>>>> Stashed changes
   .navlinks li{
   display: inline-block;
   padding: 0px 20px;
@@ -780,7 +792,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     height: 100%;
   }
   
-  #consola{
+  .console{
    height: 40%;
   }
 
@@ -1105,7 +1117,7 @@ code{
 
 
 .buttonnext:enabled:hover{
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .buttonnext:enabled:active{
@@ -1157,8 +1169,7 @@ body.fade-out {
   cursor: not-allowed;
 }
 
-
-#consola{
+.console{
   border-radius: 10px; 
   font-weight: bold;
   color: rgba(255, 255, 255, 0.301);
@@ -1338,4 +1349,61 @@ body.fade-out {
     outline-offset: 4px !important;
     box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important; 
     background-color: var(--form) !important; 
+}
+
+.mini-editor {
+    background-color: #191a21; /* Fondo oscuro tipo terminal */
+    padding: 15px;
+    border-radius: 5px;
+    margin: 10px 0 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.mini-editor code {
+    color: #f8f8f2;
+    font-size: 16px;
+}
+
+.code-input {
+    background-color: #282a36; /* Un fondo sutilmente distinto */
+    color: #50fa7b; /* Texto verde para que destaque */
+    border: 1px solid #6272a4;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    outline: none;
+    width: 200px;
+}
+
+.code-input:focus {
+    border-color: #bd93f9; /* Brilla al hacer clic */
+}
+
+.btn-demo {
+    background-color: #bd93f9;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: auto; /* Empuja el botón a la derecha */
+}
+
+.mini-console {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    margin-bottom: 20px;
+    min-height: 20px;
+    white-space: pre-wrap;
+    display: none; /* Se oculta hasta que haya código ejecutado */
+    border-left: 3px solid #50fa7b; /* Un detalle visual para indicar éxito/ejecución */
 }
