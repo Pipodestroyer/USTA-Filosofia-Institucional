@@ -365,6 +365,26 @@ def _test_lvl1():
         return False
 _test_lvl1()
 `
+    },
+    {
+                titulo: "La Segunda Vía: Causas Eficientes",
+                filosofia: '"Es imposible que algo sea causa eficiente de sí mismo, porque entonces sería anterior a sí mismo, lo cual es absurdo."',
+                enunciado: 'Crea una función <code>validar_causa(ente, causa)</code>. Si el <code>ente</code> es idéntico a la <code>causa</code>, usa <code>raise ValueError("Absurdo")</code>. Si son distintos, retorna el texto exacto <code>"Orden lógico"</code>.',
+                codigoInicial: "def validar_causa(ente, causa):\n    # Tu código aquí\n    pass",
+                testPython: `
+def _test_causa():
+    try:
+        if validar_causa("Lluvia", "Nubes") != "Orden lógico":
+            return False
+        try:
+            validar_causa("Fuego", "Fuego")
+            return False # Falló porque no lanzó el error
+        except ValueError:
+            return True  # Éxito: lanzó el error esperado
+    except:
+        return False
+_test_causa()
+`
     },           
     {
         titulo: "De Potencia a Acto",
@@ -385,58 +405,36 @@ _test_lvl2()
 `
     },
     {
-        titulo: "De Potencia a Acto",
-        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
-        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
-        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
-        docs: "https://www.w3schools.com/python/python_classes.asp",
-        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
-        testPython: `
-def _test_lvl2():
+                titulo: "La Virtud de la Prudencia",
+                filosofia: '"La prudencia es la recta razón en el obrar (recta ratio agibilium). Exige elegir el medio adecuado evitando los extremos del exceso y el defecto."',
+                enunciado: 'Define una función <code>ejercer_prudencia(pasiones)</code> que reciba una lista de 3 números enteros. La función debe encontrar el punto medio aritmético (la virtud) evitando el número más alto (exceso) y el más bajo (defecto), y <strong>retornar</strong> ese número medio.',
+                codigoInicial: "def ejercer_prudencia(pasiones):\n    # Tu código aquí\n    pass",
+                testPython: `
+def _test_prudencia():
     try:
-        obj = Ente()
-        obj.actualizar()
-        return True
+        return ejercer_prudencia([10, 50, 100]) == 50 and ejercer_prudencia([90, 5, 20]) == 20
     except:
         return False
-_test_lvl2()
+_test_prudencia()
 `
-    },
-    {
-        titulo: "La Primera Vía: El Primer Motor",
-        filosofia: '"Todo lo que se mueve es movido por otro, hasta llegar a un motor inmóvil."',
-        enunciado: 'Define una función llamada <code>encontrar_motor()</code> que no reciba parámetros y retorne la cadena de texto exacta <code>"Primer Motor"</code>.',
-        codigoInicial: "def encontrar_motor():\n    # Escribe tu código aquí\n    pass",
-        docs:"https://www.w3schools.com/python/python_functions.asp",
-        clue: ["Piensa en algo que siempre ha estado ahí, sin necesidad de ser movido por otro.", "¿Qué podría ser el origen de todo movimiento sin ser movido por algo más?", "return ..."],
-        testPython: `
-def _test_lvl1():
+            },
+            {
+                titulo: "Sustancia y Accidentes",
+                filosofia: '"La Sustancia existe por sí misma y no cambia, mientras que los Accidentes (color, tamaño, temperatura) pueden mutar sin alterar la esencia del ente."',
+                enunciado: 'Crea un diccionario llamado <code>manzana</code> con dos claves: <code>"sustancia"</code> (valor: <code>"fruta"</code>) y <code>"accidentes"</code> (valor: una lista <code>["verde", "pequeña"]</code>). Luego, actualiza el estado mutando el accidente <code>"verde"</code> por <code>"roja"</code>.',
+                codigoInicial: "# Define tu diccionario y muta su accidente aquí\n",
+                testPython: `
+def _test_sustancia():
     try:
-        print(encontrar_motor())
-        return encontrar_motor() == "Primer Motor"
+        es_fruta = manzana.get("sustancia") == "fruta"
+        es_roja = "roja" in manzana.get("accidentes", [])
+        no_es_verde = "verde" not in manzana.get("accidentes", [])
+        return es_fruta and es_roja and no_es_verde
     except:
         return False
-_test_lvl1()
+_test_sustancia()
 `
-    },
-    {
-        titulo: "De Potencia a Acto",
-        filosofia: '"El acto es anterior a la potencia en cuanto a la idea, pero la potencia es anterior en el tiempo."',
-        enunciado: 'Tienes una semilla en estado de potencia. Crea una clase <code>Ente</code> con un método <code>actualizar()</code> que imprima <code>"Acto alcanzado"</code>.',
-        codigoInicial: "class Ente:\n    # Define el método actualizar aquí\n    pass\n\nsemilla = Ente()\n# Llama al método de la semilla",
-        docs: "https://www.w3schools.com/python/python_classes.asp",
-        clue: ["La semilla tiene el potencial de convertirse en algo más. ¿Cómo puedes actualizar su estado?", "Piensa en cómo una función o método puede cambiar el estado de un objeto.", "def actualizar(self):\n    print(...)"],
-        testPython: `
-def _test_lvl2():
-    try:
-        obj = Ente()
-        obj.actualizar()
-        return True
-    except:
-        return False
-_test_lvl2()
-`
-    }
+            }
 ];
 
 let nivelActual = 0;

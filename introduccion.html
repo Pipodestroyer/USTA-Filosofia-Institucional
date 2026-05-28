@@ -5,6 +5,7 @@
         <link rel="icon" type="image/x-icon" href="src/media/favicon.gif">
         <link rel="stylesheet" href="style.css">
         <script src="/js/intro.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
         <script type="text/javascript" src="/js/darkmode.js" defer></script>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
@@ -57,7 +58,7 @@
         <div class="container" id="tutorial">
             <div class="container-overlay-tutorial">
                 <div id="tutorial-titles" style="width: 100%;">
-                    <h1 class="title" style="margin-bottom: 0; margin-top:0;">Introducción a Python</h1>
+                    <h1 class="title" style="margin-bottom: 0; margin-top:60px;">Introducción a Python</h1>
                     <p class="paragraph" style="margin-top: 0;">"El asombro es el deseo de conocimiento."</p>
                     <div class="tutorial-container">
                     <p class="explaination">Aquí se te darán los recursos necesarios para completar el juego, desde simples metodologías hasta la creación de funciones, todo en el lenguaje de programación Python.</p>
@@ -68,7 +69,7 @@
                     <div class="formgame mobile-test-height" style="gap: 15px;">
                         <div style="background-color: #0a090938; padding: 15px; border-radius: 10px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
                             <code style="font-size: 20px; background: transparent; padding: 0; color: white;">print(</code>
-                            <input type="text" id="input-print" value='"¡Hola, Santo Tomás!"' class="disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 100%;">
+                            <input type="text" id="input-print" value='"¡Hola, Santo Tomás!"' class="disable-focus" style="text-overflow: ellipsis; border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 100%;">
                             <code style="font-size: 20px; background: transparent; padding: 0; color: white;">)</code>
                         </div>
                         
@@ -82,11 +83,11 @@
                     <p class="paragraph" style="margin-bottom: 0;">2. def (Definir Funciones)</p>
                     <p class="explaination" style="margin-top: 0;">La palabra reservada <code>def</code> sirve para crear una <strong>función</strong>. Escribes los pasos una sola vez, le pones un nombre, y luego puedes llamarla tantas veces como quieras sin volver a escribir el código.</p>
                     
-                    <div class="formgame mobile-test-height" style="gap: 15px;">
+                    <div class="formgame mobile-test-height" style="gap: 15px; text-overflow: ellipsis;">
                         <div style="background-color: #0a090938; padding: 15px; border-radius: 10px; display: flex; flex-direction: column; gap: 8px; text-align: left;">
                             <code style="font-size: 18px; background: transparent; padding: 0; color: white;">def funcion_demo():<br>&nbsp;&nbsp;&nbsp;&nbsp;return</code>
-                            <input type="text" id="input-def" value='"Resultado de la función"' class="disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 80%; text-overflow: ellipsis;">
-                            <code style="font-size: 18px; background: transparent; padding: 0; color: white; text-overflow: ellipsis; overflow:hidden;">print(funcion_demo())</code>
+                            <input type="text" id="input-def" value='"Resultado de la función"' class="disable-focus" style="text-overflow: ellipsis; border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: 80%;">
+                            <code style="font-size: 18px; background: transparent; padding: 0; color: white;">print(funcion_demo())</code>
                         </div>
                         
                         <button class="buttonnext" type="button" onclick="probarDemo('def')" style="height: 45px;">
@@ -124,7 +125,7 @@
                             <code style="font-size: 18px; background: transparent; padding: 0; color: white;">pasiones = ["Ira", "Miedo", "Valentía"]</code>
                             <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
                                 <code style="font-size: 18px; background: transparent; padding: 0; color: white;">print( pasiones[</code>
-                                <input type="number" id="input-list" value='2' min="0" max="2" class="text-overflow: ellipsis; disable-focus" style="border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: auto;">
+                                <input type="number" id="input-list" value='2' min="0" max="2" class="disable-focus" style="text-overflow: ellipsis; border-radius: 5px; font-weight: bold; color: var(--success); background-color: #2525258a; height: 35px; padding: 0 10px; border: 1px solid var(--border-color); font-size: 18px; width: auto;">
                                 <code style="font-size: 18px; background: transparent; padding: 0; color: white;">] )</code>
                             </div>
                         </div>
@@ -136,15 +137,23 @@
                         <div class="console" id="consola-list" style="display: none; width: 100%; box-sizing: border-box;"></div>
                     </div>
                 </div>
-                <div id="forms">
-                    <div class="form" style="flex-direction: row; flex-wrap: wrap;" id="indexbuttons">
-                        <button class="buttoncontinue" id="send" type="button" onclick="location.href='/introduccion'">
-                        <span class="button-text">Continuar</span>
+                
+            </div>
+            <div id="forms" style="width: 100%;">
+                    <div class="buttonwrapper" id="indexbuttons" style="margin-top: 30px;">
+                        <button class="buttoncontinue" type="button" onclick="location.href='/Juego'" style="gap:60px;">
+                        <span class="button-text">Ir al juego</span>
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="25px" viewBox="0 -960 960 960" width="25px" fill="#FFFFFF"><path d="M579-480 285-774q-15-15-14.5-35.5T286-845q15-15 35.5-15t35.5 15l307 308q12 12 18 27t6 30q0 15-6 30t-18 27L356-115q-15 15-35 14.5T286-116q-15-15-15-35.5t15-35.5l293-293Z"/></svg>
-                        </button> 
+                        </button>   
+                        <button class="buttonfinish" type="button" onclick="location.href='/'" style="background: rgb(27, 27, 27); gap:30px;">
+                        <span class="button-text">Volver al inicio</span>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-200q0-17 11.5-28.5T400-440h160q17 0 28.5 11.5T600-400v200h120v-360L480-740 240-560v360Zm-80 0v-360q0-19 8.5-36t23.5-28l240-180q21-16 48-16t48 16l240 180q15 11 23.5 28t8.5 36v360q0 33-23.5 56.5T720-120H560q-17 0-28.5-11.5T520-160v-200h-80v200q0 17-11.5 28.5T400-120H240q-33 0-56.5-23.5T160-200Zm320-270Z"/></svg>
+                        </button>
+                        <button class="buttonimportant" type="button" onclick="location.href='/clasificacion'" style="background: rgb(27, 27, 27); gap:30px; padding-right:15px">
+                        <span class="button-text">Clasificaciones</span>
+                        </button>                 
                     </div>
                 </div>
-            </div>
         </div>
     </body>
 </html>

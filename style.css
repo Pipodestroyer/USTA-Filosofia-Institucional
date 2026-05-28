@@ -118,6 +118,8 @@ body.tutorial-on .container-overlay-game #gameinner {
   top: 0;
   left: 0;
   right: 0;
+  position: static !important;
+  height: fit-content;
   bottom: 0;
   position: absolute;
   background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0.274));
@@ -299,13 +301,14 @@ body.tutorial-on .container-overlay-game #gameinner {
 
 #tutorial{
   background: url("/src/media/tutorial.png");
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   box-sizing: border-box;
   text-align: left;
   z-index: -1;
   background-size: cover;
   border-width: 2px;
+  display: flex;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   border-style: solid;
@@ -509,8 +512,6 @@ body.tutorial-on .container-overlay-game #gameinner {
 
   #tutorial{
     display: flex;
-    overflow: show;
-    height: calc(100dvh + 100px);
   }
 
   .container-overlay-finish{
@@ -607,7 +608,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     flex-wrap: wrap;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out, background-color 0.3s ease, background-image 0.3s ease, background 0.3s ease;
   } 
 
   .mobile-dropdown.show{
@@ -657,7 +658,11 @@ body.tutorial-on .container-overlay-game #gameinner {
     margin-bottom: 30px;
   }
 
-  #consola{
+  .mobile-test-height{
+    height: auto !important;
+  }
+
+  .console{
    height: 30vh;
   }
 
@@ -670,11 +675,11 @@ body.tutorial-on .container-overlay-game #gameinner {
   }
 
   .paragraph{
-    font-size: max(2.5vw, 15px);
+    font-size: max(2.5vh, 20px);
   }
 
   .explaination{
-    font-size: max(2.5vh, 16px);
+    font-size: max(2vh, 13px);
   }
 }
 
@@ -687,7 +692,12 @@ body.tutorial-on .container-overlay-game #gameinner {
   }
 
   #tutorial{
-    height: calc(100vh - 104px);
+    height: fit-content;
+  }
+
+  .container-overlay-tutorial{
+    position: static;
+    justify-content: left;
   }
 
   .navlinks li{
@@ -783,7 +793,7 @@ body.tutorial-on .container-overlay-game #gameinner {
     height: 100%;
   }
   
-  #consola{
+  .console{
    height: 40%;
   }
 
@@ -1072,7 +1082,7 @@ code{
 
 
 .buttoncontinue:enabled:hover{
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .buttoncontinue:enabled:active{
@@ -1090,7 +1100,7 @@ code{
 
 
 .buttonfinish:enabled:hover{
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .buttonfinish:enabled:active{
@@ -1108,10 +1118,26 @@ code{
 
 
 .buttonnext:enabled:hover{
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .buttonnext:enabled:active{
+  transform: scale(0.98); 
+}
+
+.buttonimportant:enabled:hover{
+  transform: scale(1.02);
+}
+
+.buttonimportant:enabled:active{
+  transform: scale(0.98); 
+}
+
+.buttonhelp:enabled:hover{
+  transform: scale(1.02);
+}
+
+.buttonhelp:enabled:active{
   transform: scale(0.98); 
 }
 
@@ -1145,7 +1171,7 @@ body.fade-out {
   border-radius: 10px; 
   font-weight: bold;
   color: white;
-  background-color: #14141738;
+  background-color: #0a090938;
   height: 60%;
   padding-left: 15px;
   border: 0px;
@@ -1160,12 +1186,11 @@ body.fade-out {
   cursor: not-allowed;
 }
 
-
-#consola{
+.console{
   border-radius: 10px; 
   font-weight: bold;
   color: rgba(255, 255, 255, 0.301);
-  background-color: #14141738;
+  background-color: #0a090938;
   padding-left: 15px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -1342,3 +1367,4 @@ body.fade-out {
     box-shadow: 0 0 30px rgba(59, 130, 246, 0.5) !important; 
     background-color: var(--form) !important; 
 }
+
